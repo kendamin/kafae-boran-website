@@ -1,0 +1,794 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Concept preview: keep out of Google until KAFAE BORAN approves. Remove this line when it becomes their official site. -->
+<meta name="robots" content="noindex, nofollow">
+<title>KAFAE BORAN — Thai-Inspired Café &amp; Restaurant in Butuan City</title>
+<meta name="description" content="KAFAE BORAN, The Ancient Coffee. Thai-inspired café and restaurant in Butuan City: coffee, matcha, Thai dishes, all-day breakfast, cakes and signature cocktails. RC Intino Bldg 2, Montilla Blvd. Open daily from 10 AM.">
+<meta name="theme-color" content="#160F0A">
+<link rel="icon" type="image/png" href="images/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --espresso:#160F0A; --roast:#20160F; --teak:#2C1F15; --line:#3A2A1D;
+    --gold:#D4AA5E; --gold-hi:#F0D08A; --gold-lo:#A87A2C;
+    --cream:#FBF4E6; --cream-2:#F3E8D2; --ink:#2A2018; --ink-soft:#6B5A49;
+    --white:#FAF6EF; --muted:#BFAE97;
+    --radius:16px;
+    --gold-grad:linear-gradient(135deg,#F3D58F 0%,#D4AA5E 45%,#A87A2C 100%);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;scroll-padding-top:72px}
+  body{font-family:"Jost",system-ui,sans-serif;background:var(--espresso);color:var(--white);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  img{display:block;max-width:100%;height:auto}
+  main:focus{outline:none}
+  a{color:inherit}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+  h1,h2,h3{font-family:"Cinzel",serif;font-weight:600;letter-spacing:.06em;line-height:1.15}
+  .serif{font-family:"Cormorant Garamond",serif}
+  .kicker{font-size:12px;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);font-weight:500;display:flex;align-items:center;gap:12px}
+  .kicker::before{content:"";width:28px;height:1px;background:var(--gold)}
+  .gold-text{background:var(--gold-grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 24px;border-radius:999px;font-weight:600;font-size:14px;letter-spacing:.06em;text-decoration:none;border:1px solid transparent;transition:transform .2s,box-shadow .2s,background .2s;cursor:pointer;white-space:nowrap}
+  .btn svg{width:17px;height:17px}
+  .btn-gold{background:var(--gold-grad);color:#1B120A;box-shadow:0 8px 24px rgba(212,170,94,.25)}
+  .btn-gold:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(212,170,94,.4)}
+  .btn-line{border-color:rgba(240,208,138,.5);color:var(--gold-hi)}
+  .btn-line:hover{background:rgba(212,170,94,.12)}
+  .btn-dark{background:var(--ink);color:var(--cream)}
+  .btn-dark:hover{background:#000}
+
+  /* NAV */
+  header{position:fixed;inset:0 0 auto 0;z-index:50;transition:background .3s,border-color .3s;border-bottom:1px solid transparent}
+  header.scrolled{background:rgba(22,15,10,.92);backdrop-filter:blur(10px);border-color:var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:68px;gap:16px}
+  .brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+  .brand img{height:42px;width:auto}
+  .brand b{font-family:"Cinzel",serif;font-weight:600;letter-spacing:.14em;font-size:17px;display:block;line-height:1.1}
+  .brand small{font-size:9.5px;letter-spacing:.3em;color:var(--gold);text-transform:uppercase}
+  .nav-links{display:flex;gap:28px;align-items:center}
+  .nav-links a{text-decoration:none;font-size:14px;letter-spacing:.08em;color:var(--muted);transition:color .2s}
+  .nav-links a:hover{color:var(--gold-hi)}
+  .nav-links a.btn,.nav-links a.btn:hover{color:#1B120A}
+  .nav .btn{padding:10px 18px;font-size:13px}
+  @media(max-width:860px){.nav-links a:not(.btn){display:none}}
+  @media(max-width:420px){.nav .btn{display:none}}
+
+  /* HERO */
+  .hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;padding:120px 0 72px;overflow:hidden}
+  .hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.04)}
+  .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(22,15,10,.55) 0%,rgba(22,15,10,.35) 35%,rgba(22,15,10,.92) 82%,var(--espresso) 100%),radial-gradient(ellipse at 20% 80%,rgba(22,15,10,.7),transparent 60%)}
+  .hero .wrap{position:relative;z-index:2;width:100%}
+  .hero-grid{display:grid;grid-template-columns:1.3fr .7fr;gap:40px;align-items:end}
+  .hero h1{font-size:clamp(46px,8.5vw,104px);letter-spacing:.08em;margin:18px 0 6px}
+  .hero .sub{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:clamp(22px,3vw,32px);color:var(--gold-hi);margin-bottom:18px}
+  .hero p.lead{font-size:18px;color:#E8DCCB;max-width:520px;margin-bottom:28px}
+  .ctas{display:flex;flex-wrap:wrap;gap:12px}
+  .status{display:inline-flex;align-items:center;gap:8px;font-size:13px;letter-spacing:.08em;padding:7px 14px;border-radius:999px;background:rgba(22,15,10,.6);border:1px solid var(--line)}
+  .status i{width:8px;height:8px;border-radius:50%;background:#8a8a8a}
+  .status.open i{background:#5BD38A;box-shadow:0 0 0 4px rgba(91,211,138,.2)}
+  .hero-card{background:rgba(22,15,10,.72);backdrop-filter:blur(8px);border:1px solid var(--line);border-radius:var(--radius);padding:24px;display:grid;gap:16px}
+  .hero-card div small{display:block;font-size:11px;letter-spacing:.25em;text-transform:uppercase;color:var(--gold)}
+  .hero-card div p{font-size:15px;color:#EADFCF}
+  .rating-line{display:flex;align-items:center;gap:10px}
+  .rating-line b{font-family:"Cinzel",serif;font-size:30px;color:var(--gold-hi)}
+  .stars{color:var(--gold-hi);letter-spacing:2px}
+  @media(max-width:860px){.hero-grid{grid-template-columns:1fr}.hero{padding-bottom:48px}}
+
+  /* SECTIONS */
+  section{padding:96px 0}
+  .sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:40px;flex-wrap:wrap}
+  .sec-head h2{font-size:clamp(30px,4.5vw,48px);margin-top:10px}
+  .sec-head p{max-width:440px;color:var(--muted)}
+
+  /* ABOUT STRIP */
+  .about{padding:72px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--roast)}
+  .about-grid{display:grid;grid-template-columns:auto 1fr;gap:48px;align-items:center}
+  .about-grid img{width:140px}
+  .about h2{font-size:clamp(24px,3.4vw,36px);margin-bottom:12px}
+  .about p{color:#DCCFBD;max-width:680px;font-size:17px}
+  .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+  .chip{font-size:13px;letter-spacing:.06em;padding:7px 14px;border:1px solid var(--line);border-radius:999px;color:var(--gold-hi)}
+  @media(max-width:700px){.about-grid{grid-template-columns:1fr;gap:20px;text-align:left}.about-grid img{width:90px}}
+
+  /* BEST SELLERS */
+  .picks{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  .pick{background:var(--teak);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;transition:transform .25s,border-color .25s}
+  .pick:hover{transform:translateY(-4px);border-color:var(--gold-lo)}
+  .pick .ph{aspect-ratio:4/3;overflow:hidden;position:relative}
+  .pick .ph img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+  .pick:hover .ph img{transform:scale(1.06)}
+  .tag{position:absolute;top:12px;left:12px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;padding:5px 10px;border-radius:999px;background:var(--gold-grad);color:#1B120A}
+  .tag.new{background:#F7EEDB}
+  .pick .body{padding:16px 18px 20px;display:flex;justify-content:space-between;gap:12px;align-items:baseline}
+  .pick h3{font-family:"Cormorant Garamond",serif;font-weight:600;font-size:22px;letter-spacing:0}
+  .pick small{display:block;color:var(--muted);font-size:13px}
+  .price{font-family:"Cinzel",serif;color:var(--gold-hi);font-size:18px;white-space:nowrap}
+  @media(max-width:1000px){.picks{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:520px){.picks{grid-template-columns:1fr}}
+
+  /* MENU (cream, like their printed menu) */
+  .menu-sec{background:var(--cream);color:var(--ink)}
+  .menu-sec .kicker{color:var(--gold-lo)}.menu-sec .kicker::before{background:var(--gold-lo)}
+  .menu-sec .sec-head p{color:var(--ink-soft)}
+  /* Tabs: one scrollable row (tabs guide, strategy 1), selected state from aria-selected */
+  .tabs{display:flex;gap:8px;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;scroll-snap-type:inline proximity;scroll-padding-inline:20px;margin:0 -20px 32px;padding:10px 20px;position:sticky;top:68px;z-index:5;background:var(--cream)}
+  .tabs::-webkit-scrollbar{display:none}
+  .tab{flex:none;scroll-snap-align:start;position:relative;font-size:14px;letter-spacing:.08em;padding:10px 18px;border-radius:999px;border:1px solid #D9C7A6;background:transparent;color:var(--ink);cursor:pointer}
+  .tab[aria-selected="true"]{background:var(--ink);border-color:var(--ink);color:var(--cream)}
+  /* Shape, not just color: an underline that survives forced-colors mode */
+  .tab[aria-selected="true"]::after{content:"";position:absolute;inset:auto 18px 5px;border-block-end:2px solid currentColor}
+  .menu-panel{columns:2;column-gap:56px}
+  .menu-panel:focus-visible{outline:2px solid var(--gold-lo);outline-offset:8px;border-radius:4px}
+  .cat{break-inside:avoid;margin-bottom:40px}
+  .cat h3{font-size:20px;letter-spacing:.2em;margin-bottom:4px}
+  .cat .note{font-size:13px;color:var(--ink-soft);margin-bottom:12px;font-style:italic}
+  .items{list-style:none}
+  .cat .cols{display:flex;justify-content:flex-end;gap:0;font-size:11px;letter-spacing:.16em;color:var(--ink-soft);margin-bottom:4px}
+  .cat .cols span{width:64px;text-align:right}
+  .item{display:flex;align-items:baseline;gap:10px;padding:9px 0;border-bottom:1px dashed #DCCBAE}
+  .item .nm{flex:1;min-width:0}
+  .item .nm b{font-weight:500;font-size:16px}
+  .item .nm em{display:block;font-size:13px;color:var(--ink-soft);font-style:normal;line-height:1.45}
+  .item .pr{font-family:"Cinzel",serif;font-size:15px;font-weight:600;width:64px;text-align:right;flex-shrink:0}
+  .item .pr.wide{width:auto}
+  .menu-foot{margin-top:8px;padding:18px 20px;border-radius:12px;background:var(--cream-2);font-size:14px;color:var(--ink-soft);display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between}
+  @media(max-width:820px){.menu-panel{columns:1}}
+  @media(max-width:620px){.tabs{margin-bottom:24px}.tab{padding:9px 15px;font-size:13px}.tab[aria-selected="true"]::after{inset-inline:15px}}
+
+  /* GALLERY */
+  .gallery{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:200px;grid-auto-flow:dense;gap:12px}
+  button{font-family:inherit}
+  .gallery button{border:0;padding:0;border-radius:12px;overflow:hidden;cursor:zoom-in;background:var(--teak);position:relative}
+  .gallery img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+  .gallery button:hover img{transform:scale(1.05)}
+  .gallery button span{position:absolute;left:10px;bottom:10px;font-size:12px;letter-spacing:.06em;background:rgba(22,15,10,.75);padding:4px 10px;border-radius:999px;color:var(--white)}
+  .g-wide{grid-column:span 2}.g-tall{grid-row:span 2}
+  @media(max-width:860px){.gallery{grid-template-columns:repeat(2,1fr);grid-auto-rows:160px}}
+  /* Native <dialog> lightbox (dialog guide) */
+  .lightbox{border:0;padding:0;background:transparent;max-width:min(1100px,calc(100vw - 32px));max-height:calc(100dvh - 32px);margin:auto;overflow:visible;color:var(--white)}
+  .lightbox:modal{overscroll-behavior:contain}
+  .lightbox::backdrop{background:rgba(10,7,4,.94);overflow:hidden;overscroll-behavior:contain}
+  .lightbox figure{display:grid;gap:10px;justify-items:center}
+  .lightbox img{max-height:calc(100dvh - 110px);max-width:100%;width:auto;height:auto;border-radius:10px}
+  .lightbox figcaption{font-size:14px;letter-spacing:.04em;color:var(--muted);text-align:center}
+  .lightbox form{position:absolute;top:-6px;right:-6px}
+  .lightbox form button{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:var(--teak);color:var(--white);font-size:18px;cursor:pointer}
+
+  /* REVIEWS */
+  .reviews{background:var(--roast);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .rev-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:28px;align-items:stretch}
+  .score{background:var(--teak);border:1px solid var(--line);border-radius:var(--radius);padding:32px;text-align:center;display:flex;flex-direction:column;justify-content:center;gap:6px}
+  .score b{font-family:"Cinzel",serif;font-size:72px;line-height:1;color:var(--gold-hi)}
+  .score .stars{font-size:22px}
+  .score p{color:var(--muted);font-size:15px}
+  .rev-list{display:grid;gap:12px}
+  .review{display:flex;align-items:center;gap:14px;background:var(--teak);border:1px solid var(--line);border-radius:14px;padding:16px 18px}
+  .avatar{width:44px;height:44px;border-radius:50%;background:var(--gold-grad);color:#1B120A;display:grid;place-items:center;font-family:"Cinzel",serif;font-weight:700;flex-shrink:0}
+  .review small{color:var(--muted)}
+  .review.cta{justify-content:space-between;flex-wrap:wrap;border-style:dashed;border-color:var(--gold-lo)}
+  .review.cta small{display:block}
+  @media(max-width:820px){.rev-grid{grid-template-columns:1fr}}
+
+  /* VISIT */
+  .visit{background:var(--cream);color:var(--ink)}
+  .visit .kicker{color:var(--gold-lo)}.visit .kicker::before{background:var(--gold-lo)}
+  .loc-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:24px}
+  .map{border-radius:var(--radius);overflow:hidden;min-height:420px;border:1px solid #DCCBAE;background:var(--cream-2)}
+  .map iframe{width:100%;height:100%;min-height:420px;border:0;display:block}
+  .loc-card{background:#fff;border:1px solid #E6D7BC;border-radius:var(--radius);padding:28px;display:grid;gap:18px;align-content:start}
+  .loc-card small{display:block;font-size:11px;letter-spacing:.25em;text-transform:uppercase;color:var(--gold-lo);margin-bottom:2px;font-weight:600}
+  .loc-card p{font-size:16px}
+  .loc-card a{text-decoration:none;border-bottom:1px solid #D9C7A6}
+  .hours{width:100%;border-collapse:collapse;font-size:15px}
+  .hours td{padding:5px 0;border-bottom:1px dashed #E6D7BC}
+  .hours td:last-child{text-align:right}
+  .hours tr.today td{font-weight:600;color:#000}
+  @media(max-width:860px){.loc-grid{grid-template-columns:1fr}.map,.map iframe{min-height:320px}}
+
+  /* CONTACT */
+  .contact{text-align:center;position:relative;overflow:hidden}
+  .contact::before{content:"";position:absolute;inset:0;background:url("images/signature-cocktails.jpg") center/cover;opacity:.18}
+  .contact .wrap{position:relative}
+  .contact .kicker{justify-content:center}
+  .contact h2{font-size:clamp(32px,5vw,56px);margin:14px 0}
+  .contact p.lead{color:#DCCFBD;max-width:560px;margin:0 auto 28px;font-size:17px}
+  .contact .ctas{justify-content:center}
+  .contact-links{display:flex;flex-wrap:wrap;gap:10px 22px;justify-content:center;margin-top:28px;font-size:14px}
+  .contact-links a{color:var(--muted);text-decoration:none;border-bottom:1px solid var(--line)}
+  .contact-links a:hover{color:var(--gold-hi)}
+
+  footer{border-top:1px solid var(--line);padding:26px 0 30px;font-size:13px;color:var(--muted)}
+  footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+  footer a{color:var(--gold-hi);text-decoration:none}
+
+  /* MOBILE ACTION BAR */
+  .mbar{display:none}
+  @media(max-width:760px){
+    body{padding-bottom:70px}
+    .mbar{display:grid;grid-template-columns:repeat(3,1fr);position:fixed;left:0;right:0;bottom:0;z-index:60;background:rgba(22,15,10,.97);border-top:1px solid var(--line);padding:8px 8px calc(8px + env(safe-area-inset-bottom))}
+    .mbar a{display:flex;flex-direction:column;align-items:center;gap:3px;font-size:12px;letter-spacing:.06em;text-decoration:none;color:var(--white);padding:6px 0;border-radius:10px}
+    .mbar a:first-child{background:var(--gold-grad);color:#1B120A;font-weight:600}
+    .mbar svg{width:20px;height:20px}
+    section{padding:72px 0}
+  }
+
+  /* Scroll-driven entry effect, CSS only (scroll-entry-exit-effects guide).
+     Decorative, so no JS fallback: unsupported browsers just show the content. */
+  @media(prefers-reduced-motion:no-preference){
+    @supports ((animation-timeline: view()) and (animation-range: entry)){
+      @keyframes rise-in{from{opacity:0;transform:translateY(24px)}}
+      .reveal{animation:rise-in auto linear backwards;animation-timeline:view();animation-range:entry 0% entry 60%}
+    }
+  }
+  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+  /* Accessibility helpers */
+  .visually-hidden:where(:not(:focus-within,:active)){position:absolute!important;clip-path:inset(50%)!important;overflow:hidden!important;width:1px!important;height:1px!important;margin:-1px!important;padding:0!important;border:0!important;white-space:nowrap!important}
+  .skip-link{position:fixed;top:10px;left:10px;z-index:200;background:var(--gold-grad);color:#1B120A;padding:10px 16px;border-radius:999px;font-weight:600;text-decoration:none}
+  :where(a:any-link,button):focus-visible{outline:3px solid var(--gold-hi);outline-offset:3px}
+  .menu-sec :where(a:any-link,button):focus-visible,.visit :where(a:any-link,button):focus-visible{outline-color:#7A5414}
+</style>
+</head>
+<body>
+<a class="skip-link visually-hidden" href="#main">Skip to main content</a>
+
+<header id="top">
+  <div class="wrap nav">
+    <a class="brand" href="#">
+      <img src="images/logo-mark.png" alt="KAFAE BORAN logo" width="280" height="570">
+      <span><b>KAFAE BORAN</b><small>The Ancient Coffee</small></span>
+    </a>
+    <nav class="nav-links" aria-label="Main">
+      <a href="#favorites">Favorites</a>
+      <a href="#menu">Menu</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#visit">Visit</a>
+      <a class="btn btn-gold" href="https://m.me/100095023802641" target="_blank" rel="noopener">Reserve a table</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" tabindex="-1">
+  <!-- HERO -->
+  <section class="hero">
+    <!-- LCP image: a real <img> so the preload scanner finds it, with high fetch priority (optimize-image-priority) -->
+    <img class="hero-bg" src="images/thai-feast.jpg" alt="A table full of Thai dishes at KAFAE BORAN" width="800" height="533" fetchpriority="high">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div>
+          <span class="status" id="status"><i></i><span id="statusText">Open daily from 10 AM</span></span>
+          <h1 class="gold-text">KAFAE<br>BORAN</h1>
+          <div class="sub">The Ancient Coffee · Butuan City</div>
+          <p class="lead">A Thai-inspired café &amp; restaurant. Curated food, coffee &amp; cocktails in a space made to unwind.</p>
+          <div class="ctas">
+            <a class="btn btn-gold" href="#menu">View the menu</a>
+            <a class="btn btn-line" href="https://m.me/100095023802641" target="_blank" rel="noopener">Message to reserve</a>
+          </div>
+        </div>
+        <aside class="hero-card" aria-label="Quick info">
+          <div class="rating-line"><b>4.5</b><div><span class="stars">★★★★½</span><br><small style="letter-spacing:.05em;text-transform:none;color:var(--muted)">55 Google reviews</small></div></div>
+          <div><small>Hours</small><p>Mon–Sun, 10 AM<br>until 12 MN weekdays · 1 AM weekends</p></div>
+          <div><small>Find us</small><p>Left Wing, RC Intino Bldg 2,<br>Montilla Blvd, Butuan City</p></div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about">
+    <div class="wrap about-grid reveal">
+      <img src="images/logo.png" alt="KAFAE BORAN, The Ancient Coffee" width="391" height="684">
+      <div>
+        <div class="kicker">Kafae Boran · "ancient coffee" in Thai</div>
+        <h2>A little Thailand on Montilla Boulevard</h2>
+        <p>Strong Thai-style coffee, oat-based matcha, Tom Yam and Pad Thai, mango sticky rice, and cocktails like the Songkran and Phaya Naga. Come for a slow coffee in the morning or stay for dinner and drinks with the barkada.</p>
+        <div class="chips">
+          <span class="chip">Dine-in</span><span class="chip">Outdoor seating</span><span class="chip">Reservations</span><span class="chip">All-day breakfast</span><span class="chip">Cocktails</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAVORITES -->
+  <section id="favorites">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div><div class="kicker">Best sellers &amp; new</div><h2>Guest favorites</h2></div>
+        <p>The two desserts our menu calls best sellers, plus the newest drinks on the bar.</p>
+      </div>
+      <div class="picks">
+        <article class="pick reveal"><div class="ph"><img src="images/mango-sticky-rice.jpg" alt="Mango sticky rice with coconut cream" loading="lazy" srcset="images/mango-sticky-rice-800.jpg 800w, images/mango-sticky-rice.jpg 1066w" sizes="(max-width: 520px) 100vw, (max-width: 1000px) 50vw, 300px" width="1066" height="1599"><span class="tag">Best seller</span></div><div class="body"><div><h3>Mango Sticky Rice</h3><small>Dessert</small></div><span class="price">₱250</span></div></article>
+        <article class="pick reveal"><div class="ph"><img src="images/oreo-matcha.jpg" alt="Kafae Oreo Matcha in a tall glass" loading="lazy" width="600" height="800"><span class="tag new">New</span></div><div class="body"><div><h3>Kafae Oreo Matcha</h3><small>Matcha</small></div><span class="price">₱195</span></div></article>
+        <article class="pick reveal"><div class="ph"><img src="images/coconut-latte.jpg" alt="Kafae Coconut Latte" loading="lazy" width="600" height="800"><span class="tag new">New</span></div><div class="body"><div><h3>Kafae Coconut Latte</h3><small>Coffee</small></div><span class="price">₱195</span></div></article>
+        <article class="pick reveal"><div class="ph"><img src="images/pad-thai.jpg" alt="Pad Thai with shrimp" loading="lazy" width="800" height="533"></div><div class="body"><div><h3>Pad Thai</h3><small>Noodles</small></div><span class="price">₱275</span></div></article>
+        <article class="pick reveal"><div class="ph"><img src="images/tom-yam-tom-ka-gai.jpg" alt="Tom Yam and Tom Ka Gai in hot pots" loading="lazy" width="800" height="533"></div><div class="body"><div><h3>Tom Yam</h3><small>Thai soup · Tom Ka Gai ₱525</small></div><span class="price">₱495</span></div></article>
+        <article class="pick reveal"><div class="ph"><img src="images/matcha-flight.jpg" alt="Wan-Man Matcha and Matcha Maphrao on a wooden board" loading="lazy" width="800" height="600"><span class="tag new">New</span></div><div class="body"><div><h3>Wan-Man Matcha</h3><small>&amp; Matcha Maphrao</small></div><span class="price">₱195</span></div></article>
+        <article class="pick reveal"><div class="ph"><img src="images/songkran.jpg" alt="Songkran cocktail with smoke and rose petal" loading="lazy" srcset="images/songkran-800.jpg 800w, images/songkran.jpg 1066w" sizes="(max-width: 520px) 100vw, (max-width: 1000px) 50vw, 300px" width="1066" height="1599"><span class="tag">Signature</span></div><div class="body"><div><h3>Songkran</h3><small>Signature cocktail</small></div><span class="price">₱275</span></div></article>
+        <article class="pick reveal"><div class="ph"><img src="images/kafae-pitchers.jpg" alt="Kafae Pitchers: pink lemonade, iced tea and cucumber lemonade" loading="lazy" width="600" height="800"><span class="tag new">New</span></div><div class="body"><div><h3>Kafae Pitchers</h3><small>For sharing</small></div><span class="price">₱260</span></div></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- MENU -->
+  <section class="menu-sec" id="menu">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><div class="kicker">Our menu</div><h2>Eat, sip, unwind</h2></div>
+        <p>Prices in pesos, from KAFAE BORAN's own menu. Prices may change, so message us to confirm.</p>
+      </div>
+      <!-- focusgroup gives native arrow-key movement where supported; explicit roles + a tiny script cover other browsers -->
+      <div class="tabs" focusgroup="tablist nomemory" role="tablist" aria-label="Menu categories">
+        <button type="button" class="tab" role="tab" id="tab-coffee" aria-selected="true" focusgroupstart>Coffee &amp; Tea</button>
+        <button type="button" class="tab" role="tab" id="tab-cold" aria-selected="false">Smoothies &amp; Fizz</button>
+        <button type="button" class="tab" role="tab" id="tab-food" aria-selected="false">Food</button>
+        <button type="button" class="tab" role="tab" id="tab-dessert" aria-selected="false">Desserts</button>
+        <button type="button" class="tab" role="tab" id="tab-bar" aria-selected="false">Cocktails</button>
+      </div>
+      <div id="menuPanels"><!-- MENU: copied from KAFAE BORAN's 2025 Canva menu (tinyurl.com/MENU2025KafaeBoran). Edit prices right here. -->
+      <div class="menu-panel" id="panel-coffee" role="tabpanel" aria-labelledby="tab-coffee" tabindex="0">
+        <div class="cat">
+          <h3>Espresso Based</h3>
+          <div class="cols" aria-hidden="true"><span>Hot</span><span>Iced</span></div>
+          <ul class="items">
+            <li class="item"><span class="nm"><b>Espresso</b></span><span class="pr"><span class="visually-hidden">Hot </span>₱130</span><span class="pr" aria-hidden="true">–</span></li>
+            <li class="item"><span class="nm"><b>Cafe Americano</b></span><span class="pr"><span class="visually-hidden">Hot </span>₱130</span><span class="pr"><span class="visually-hidden">Iced </span>₱140</span></li>
+            <li class="item"><span class="nm"><b>Long Black</b></span><span class="pr"><span class="visually-hidden">Hot </span>₱130</span><span class="pr"><span class="visually-hidden">Iced </span>₱140</span></li>
+            <li class="item"><span class="nm"><b>Cafe Latte</b></span><span class="pr"><span class="visually-hidden">Hot </span>₱150</span><span class="pr"><span class="visually-hidden">Iced </span>₱160</span></li>
+            <li class="item"><span class="nm"><b>Flat White</b></span><span class="pr"><span class="visually-hidden">Hot </span>₱150</span><span class="pr" aria-hidden="true">–</span></li>
+            <li class="item"><span class="nm"><b>Cortado</b></span><span class="pr"><span class="visually-hidden">Hot </span>₱150</span><span class="pr" aria-hidden="true">–</span></li>
+            <li class="item"><span class="nm"><b>Spanish Latte</b></span><span class="pr"><span class="visually-hidden">Hot </span>₱160</span><span class="pr"><span class="visually-hidden">Iced </span>₱180</span></li>
+            <li class="item"><span class="nm"><b>Cappuccino</b></span><span class="pr"><span class="visually-hidden">Hot </span>₱150</span><span class="pr"><span class="visually-hidden">Iced </span>₱160</span></li>
+            <li class="item"><span class="nm"><b>Mocha Sidam</b></span><span class="pr"><span class="visually-hidden">Hot </span>₱160</span><span class="pr"><span class="visually-hidden">Iced </span>₱180</span></li>
+            <li class="item"><span class="nm"><b>Caramel Latte</b></span><span class="pr"><span class="visually-hidden">Hot </span>₱160</span><span class="pr"><span class="visually-hidden">Iced </span>₱180</span></li>
+            <li class="item"><span class="nm"><b>Salted Caramel</b></span><span class="pr"><span class="visually-hidden">Hot </span>₱170</span><span class="pr"><span class="visually-hidden">Iced </span>₱190</span></li>
+            <li class="item"><span class="nm"><b>White Mocha</b></span><span class="pr"><span class="visually-hidden">Hot </span>₱160</span><span class="pr"><span class="visually-hidden">Iced </span>₱180</span></li>
+          </ul>
+        </div>
+        <div class="cat">
+          <h3>New at Kafae Boran</h3>
+          <ul class="items">
+            <li class="item"><span class="nm"><b>Kafae Coconut Latte</b></span><span class="pr">₱195</span></li>
+            <li class="item"><span class="nm"><b>Kafae Oreo Matcha</b></span><span class="pr">₱195</span></li>
+            <li class="item"><span class="nm"><b>Wan-Man Matcha · Matcha Maphrao</b></span><span class="pr">₱195</span></li>
+            <li class="item"><span class="nm"><b>Kafae Pitchers</b><em>Pink Lemonade, Iced Tea or Cucumber Lemonade</em></span><span class="pr">₱260</span></li>
+            <li class="item"><span class="nm"><b>Sapparot Soda</b></span><span class="pr">₱195</span></li>
+            <li class="item"><span class="nm"><b>Tropical Sunset</b></span><span class="pr">₱205</span></li>
+            <li class="item"><span class="nm"><b>Nam Hom Kiwi</b></span><span class="pr">₱185</span></li>
+          </ul>
+        </div>
+        <div class="cat">
+          <h3>Signature</h3>
+          <ul class="items">
+            <li class="item"><span class="nm"><b>Koh Samui</b><em>Espresso shots, special dark chocolate, sweet almond and berry syrup</em></span><span class="pr">₱215</span></li>
+            <li class="item"><span class="nm"><b>Khao Yai</b><em>Cookies &amp; cream with espresso shots, caramel sauce and dried berries</em></span><span class="pr">₱215</span></li>
+            <li class="item"><span class="nm"><b>Thai Milk Tea</b></span><span class="pr">₱185</span></li>
+          </ul>
+        </div>
+        <div class="cat">
+          <h3>Chama Cha Series</h3>
+          <div class="cols" aria-hidden="true"><span>Hot</span><span>Iced</span><span>Blend</span></div>
+          <ul class="items">
+            <li class="item"><span class="nm"><b>Classic Matcha</b></span><span class="pr"><span class="visually-hidden">Hot </span>₱160</span><span class="pr"><span class="visually-hidden">Iced </span>₱190</span><span class="pr"><span class="visually-hidden">Blend </span>₱215</span></li>
+            <li class="item"><span class="nm"><b>Dirty Matcha</b></span><span class="pr"><span class="visually-hidden">Hot </span>₱180</span><span class="pr"><span class="visually-hidden">Iced </span>₱205</span><span class="pr" aria-hidden="true">–</span></li>
+          </ul>
+        </div>
+        <div class="cat">
+          <h3>Blended Espresso</h3>
+          <ul class="items">
+            <li class="item"><span class="nm"><b>Coffee Freeze</b></span><span class="pr">₱195</span></li>
+            <li class="item"><span class="nm"><b>Frozen Black Mocha</b></span><span class="pr">₱205</span></li>
+            <li class="item"><span class="nm"><b>Winter Caramel</b></span><span class="pr">₱205</span></li>
+            <li class="item"><span class="nm"><b>Frozen White Mocha</b></span><span class="pr">₱205</span></li>
+            <li class="item"><span class="nm"><b>Blended Salted Caramel</b></span><span class="pr">₱205</span></li>
+          </ul>
+        </div>
+        <div class="cat">
+          <h3>Pour Over Brew Bar</h3>
+          <p class="note">Single origin, brewed on Kalita or Origami</p>
+          <ul class="items">
+            <li class="item"><span class="nm"><b>Local Seasonal</b></span><span class="pr">₱130</span></li>
+            <li class="item"><span class="nm"><b>Imported Seasonal</b></span><span class="pr">₱150</span></li>
+          </ul>
+        </div>
+        <div class="cat">
+          <h3>Tea Boran (Hot)</h3>
+          <ul class="items">
+            <li class="item"><span class="nm"><b>French Earl Grey</b></span><span class="pr">₱160</span></li>
+            <li class="item"><span class="nm"><b>English Breakfast</b></span><span class="pr">₱160</span></li>
+            <li class="item"><span class="nm"><b>Lemon Ginger Green Tea</b></span><span class="pr">₱160</span></li>
+            <li class="item"><span class="nm"><b>Chamomile Garden</b></span><span class="pr">₱160</span></li>
+          </ul>
+        </div>
+        <div class="cat">
+          <h3>Non-Coffee &amp; Coffee Desserts</h3>
+          <ul class="items">
+            <li class="item"><span class="nm"><b>Hot Choco Sidam</b></span><span class="pr">₱150</span></li>
+            <li class="item"><span class="nm"><b>Iced Choco Sidam</b></span><span class="pr">₱170</span></li>
+            <li class="item"><span class="nm"><b>Affogato</b></span><span class="pr">₱195</span></li>
+            <li class="item"><span class="nm"><b>Matcha Gato</b></span><span class="pr">₱210</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="menu-panel" id="panel-cold" role="tabpanel" aria-labelledby="tab-cold" hidden="until-found">
+        <div class="cat">
+          <h3>Signature Blended (Non-Coffee)</h3>
+          <ul class="items">
+            <li class="item"><span class="nm"><b>Aroy</b><em>Special dark chocolate with amaretto and berries</em></span><span class="pr">₱205</span></li>
+            <li class="item"><span class="nm"><b>Tee Rak</b><em>White chocolate with a twist of apricot</em></span><span class="pr">₱205</span></li>
+            <li class="item"><span class="nm"><b>Wai Jai</b><em>Caramel with a twist of apricot</em></span><span class="pr">₱205</span></li>
+            <li class="item"><span class="nm"><b>O-hoh</b><em>Special dark chocolate with French mint and nuts</em></span><span class="pr">₱205</span></li>
+            <li class="item"><span class="nm"><b>Suay</b><em>White chocolate, our take on cookies &amp; cream</em></span><span class="pr">₱205</span></li>
+            <li class="item"><span class="nm"><b>Jing-Jing</b><em>Caramel with hazelnuts and berries</em></span><span class="pr">₱205</span></li>
+          </ul>
+        </div>
+        <div class="cat">
+          <h3>Smoothies</h3>
+          <ul class="items">
+            <li class="item"><span class="nm"><b>Kid Teung</b><em>Guava, amaretto, fresh basil &amp; mint</em></span><span class="pr">₱205</span></li>
+            <li class="item"><span class="nm"><b>Phee Naawng</b><em>Dragon fruit, sweet almond, fresh basil &amp; mint</em></span><span class="pr">₱205</span></li>
+            <li class="item"><span class="nm"><b>Jai</b><em>Mango, caramel, dried apricot and fresh basil</em></span><span class="pr">₱205</span></li>
+            <li class="item"><span class="nm"><b>Mun Chan</b><em>Lychee, orgeat, fresh basil and mint</em></span><span class="pr">₱205</span></li>
+            <li class="item"><span class="nm"><b>Dee Jai Berry</b><em>Blueberry and blackberry with zesty lemon</em></span><span class="pr">₱205</span></li>
+          </ul>
+        </div>
+        <div class="cat">
+          <h3>Teas Fizz</h3>
+          <p class="note">Carbonated cold brew Earl Grey lavender with fresh herbs and chia</p>
+          <ul class="items">
+            <li class="item"><span class="nm"><b>Dragon Fusion</b><em>Dragon fruit, sweet almond and yuzu</em></span><span class="pr">₱170</span></li>
+            <li class="item"><span class="nm"><b>Farang Fizz</b><em>Guava, blackberry and yuzu</em></span><span class="pr">₱170</span></li>
+            <li class="item"><span class="nm"><b>Nan Dok Mai</b><em>Mango, amaretto and yuzu</em></span><span class="pr">₱170</span></li>
+            <li class="item"><span class="nm"><b>Cha Khun</b><em>Lychee, blackberry and yuzu</em></span><span class="pr">₱170</span></li>
+            <li class="item"><span class="nm"><b>Lemonade</b><em>Iced or hot</em></span><span class="pr">₱170</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="menu-panel" id="panel-food" role="tabpanel" aria-labelledby="tab-food" hidden="until-found">
+        <div class="cat">
+          <h3>Thai Soup</h3>
+          <ul class="items">
+            <li class="item"><span class="nm"><b>Tom Yam</b></span><span class="pr">₱495</span></li>
+            <li class="item"><span class="nm"><b>Tom Ka Gai</b></span><span class="pr">₱525</span></li>
+          </ul>
+        </div>
+        <div class="cat">
+          <h3>Main Course</h3>
+          <ul class="items">
+            <li class="item"><span class="nm"><b>Cajun Shrimp</b></span><span class="pr">₱530</span></li>
+            <li class="item"><span class="nm"><b>Thai Green Curry Chicken</b></span><span class="pr">₱460</span></li>
+            <li class="item"><span class="nm"><b>Steamed Pompano</b></span><span class="pr">₱595</span></li>
+            <li class="item"><span class="nm"><b>Fried Fish &amp; Lemon Butter Sauce</b><em>With mango tomato salsa</em></span><span class="pr">₱385</span></li>
+            <li class="item"><span class="nm"><b>Fried Pompano w/ Lemon Butter Sauce</b></span><span class="pr">₱520</span></li>
+            <li class="item"><span class="nm"><b>Deep Fried Thai Chicken in Tamarind Sauce</b></span><span class="pr">₱355</span></li>
+            <li class="item"><span class="nm"><b>Crispy Pork Bagnet</b><em>Coco cream sauce &amp; shrimp paste</em></span><span class="pr">₱420</span></li>
+            <li class="item"><span class="nm"><b>Grilled Spare Ribs in Thai Chili Sauce</b><em>Topped with pineapple &amp; tomato</em></span><span class="pr">₱465</span></li>
+            <li class="item"><span class="nm"><b>Orange Fried Pork Chop</b><em>Garlic mustard sauce</em></span><span class="pr">₱420</span></li>
+            <li class="item"><span class="nm"><b>Salt &amp; Pepper Beef Brisket</b></span><span class="pr">₱540</span></li>
+            <li class="item"><span class="nm"><b>Stir Fried Beef w/ Sweet Ginger Soya Sauce</b></span><span class="pr">₱420</span></li>
+            <li class="item"><span class="nm"><b>Grilled Breast Chicken w/ BBQ Sauce</b></span><span class="pr">₱385</span></li>
+            <li class="item"><span class="nm"><b>Khao Pad (Thai Fried Rice)</b></span><span class="pr">₱285</span></li>
+            <li class="item"><span class="nm"><b>Spring Rolls</b></span><span class="pr">₱250</span></li>
+            <li class="item"><span class="nm"><b>Stir Fried Chicken</b></span><span class="pr">₱405</span></li>
+            <li class="item"><span class="nm"><b>Thai Crispy Pork Belly</b></span><span class="pr">₱385</span></li>
+            <li class="item"><span class="nm"><b>Thai Grilled Beef Salad</b></span><span class="pr">₱415</span></li>
+          </ul>
+        </div>
+        <div class="cat">
+          <h3>All-Day Breakfast</h3>
+          <p class="note">Rice meals with your choice of omelet, sunny side up or scrambled egg</p>
+          <div class="cols" aria-hidden="true"><span>Plain</span><span>Bagoong</span></div>
+          <ul class="items">
+            <li class="item"><span class="nm"><b>Beef Tapa</b></span><span class="pr"><span class="visually-hidden">Plain </span>₱250</span><span class="pr"><span class="visually-hidden">Bagoong </span>₱285</span></li>
+            <li class="item"><span class="nm"><b>Grilled Hungarian Sausage</b></span><span class="pr"><span class="visually-hidden">Plain </span>₱250</span><span class="pr"><span class="visually-hidden">Bagoong </span>₱285</span></li>
+            <li class="item"><span class="nm"><b>Corned Beef Hash</b></span><span class="pr"><span class="visually-hidden">Plain </span>₱265</span><span class="pr"><span class="visually-hidden">Bagoong </span>₱295</span></li>
+            <li class="item"><span class="nm"><b>Additional Rice</b></span><span class="pr"><span class="visually-hidden">Plain </span>₱45</span><span class="pr"><span class="visually-hidden">Bagoong </span>₱75</span></li>
+          </ul>
+        </div>
+        <div class="cat">
+          <h3>Non-Rice Meals</h3>
+          <ul class="items">
+            <li class="item"><span class="nm"><b>Boran Burger</b></span><span class="pr">₱280</span></li>
+            <li class="item"><span class="nm"><b>Waffle My Day</b></span><span class="pr">₱380</span></li>
+          </ul>
+        </div>
+        <div class="cat">
+          <h3>Pasta</h3>
+          <ul class="items">
+            <li class="item"><span class="nm"><b>Bolognese</b></span><span class="pr">₱250</span></li>
+            <li class="item"><span class="nm"><b>Carbonara</b></span><span class="pr">₱255</span></li>
+            <li class="item"><span class="nm"><b>Sardines Pasta</b></span><span class="pr">₱275</span></li>
+            <li class="item"><span class="nm"><b>Baked Penne Pasta</b></span><span class="pr">₱255</span></li>
+            <li class="item"><span class="nm"><b>Pad Thai</b></span><span class="pr">₱275</span></li>
+          </ul>
+        </div>
+        <div class="cat">
+          <h3>Salads</h3>
+          <ul class="items">
+            <li class="item"><span class="nm"><b>Bangbang Chicken Salad</b></span><span class="pr">₱430</span></li>
+            <li class="item"><span class="nm"><b>Mango &amp; Pomelo Salad</b></span><span class="pr">₱430</span></li>
+            <li class="item"><span class="nm"><b>Fruit Sum-Tum Salad</b></span><span class="pr">₱460</span></li>
+          </ul>
+        </div>
+        <div class="cat">
+          <h3>Appetizers</h3>
+          <ul class="items">
+            <li class="item"><span class="nm"><b>French Fries</b></span><span class="pr">₱145</span></li>
+            <li class="item"><span class="nm"><b>Cheesy Quesadilla</b></span><span class="pr">₱240</span></li>
+            <li class="item"><span class="nm"><b>Beefy Quesadilla</b></span><span class="pr">₱275</span></li>
+            <li class="item"><span class="nm"><b>Nachos</b></span><span class="pr">₱285</span></li>
+            <li class="item"><span class="nm"><b>Chicken Salad Sandwich</b></span><span class="pr">₱300</span></li>
+            <li class="item"><span class="nm"><b>Classic Tuna Sandwich</b></span><span class="pr">₱280</span></li>
+            <li class="item"><span class="nm"><b>Mozzarella Nuggets</b></span><span class="pr">₱330</span></li>
+            <li class="item"><span class="nm"><b>Tod Mun Pla (Fish Cake)</b></span><span class="pr">₱350</span></li>
+          </ul>
+        </div>
+        <div class="cat">
+          <h3>Add-ons</h3>
+          <ul class="items">
+            <li class="item"><span class="nm"><b>Omelet</b></span><span class="pr">₱70</span></li>
+            <li class="item"><span class="nm"><b>Sunny Side Up</b></span><span class="pr">₱60</span></li>
+            <li class="item"><span class="nm"><b>Scrambled Egg</b></span><span class="pr">₱60</span></li>
+            <li class="item"><span class="nm"><b>Cheese</b></span><span class="pr">₱60</span></li>
+            <li class="item"><span class="nm"><b>Bread</b></span><span class="pr">₱40</span></li>
+            <li class="item"><span class="nm"><b>Ice Cream</b></span><span class="pr">₱70</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="menu-panel" id="panel-dessert" role="tabpanel" aria-labelledby="tab-dessert" hidden="until-found">
+        <div class="cat">
+          <h3>Best Sellers</h3>
+          <ul class="items">
+            <li class="item"><span class="nm"><b>Mango Sticky Rice</b></span><span class="pr">₱250</span></li>
+            <li class="item"><span class="nm"><b>Brownie a la Mode</b></span><span class="pr">₱250</span></li>
+          </ul>
+        </div>
+        <div class="cat">
+          <h3>Cakes &amp; Pastries</h3>
+          <div class="cols" aria-hidden="true"><span>Slice</span><span>Whole</span></div>
+          <ul class="items">
+            <li class="item"><span class="nm"><b>Blackout Cake</b></span><span class="pr"><span class="visually-hidden">Slice </span>₱250</span><span class="pr"><span class="visually-hidden">Whole </span>₱1,800</span></li>
+            <li class="item"><span class="nm"><b>Almond Sans Rival Cake</b></span><span class="pr"><span class="visually-hidden">Slice </span>₱255</span><span class="pr"><span class="visually-hidden">Whole </span>₱1,950</span></li>
+            <li class="item"><span class="nm"><b>Oreo Cheesecake</b></span><span class="pr"><span class="visually-hidden">Slice </span>₱285</span><span class="pr"><span class="visually-hidden">Whole </span>₱2,050</span></li>
+            <li class="item"><span class="nm"><b>Mango Cream Cheese Cake</b></span><span class="pr"><span class="visually-hidden">Slice </span>₱280</span><span class="pr"><span class="visually-hidden">Whole </span>₱2,000</span></li>
+            <li class="item"><span class="nm"><b>Carrot Cake</b></span><span class="pr"><span class="visually-hidden">Slice </span>₱285</span><span class="pr"><span class="visually-hidden">Whole </span>₱2,050</span></li>
+            <li class="item"><span class="nm"><b>Ube Cheese Cake</b></span><span class="pr"><span class="visually-hidden">Slice </span>₱280</span><span class="pr"><span class="visually-hidden">Whole </span>₱2,000</span></li>
+            <li class="item"><span class="nm"><b>Plain Brownies</b></span><span class="pr"><span class="visually-hidden">Slice </span>₱130</span><span class="pr"><span class="visually-hidden">Whole </span>₱1,400</span></li>
+            <li class="item"><span class="nm"><b>Cashew Brownies</b></span><span class="pr"><span class="visually-hidden">Slice </span>₱140</span><span class="pr"><span class="visually-hidden">Whole </span>₱1,500</span></li>
+            <li class="item"><span class="nm"><b>Butterscotch</b></span><span class="pr"><span class="visually-hidden">Slice </span>₱120</span><span class="pr"><span class="visually-hidden">Whole </span>₱1,300</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="menu-panel" id="panel-bar" role="tabpanel" aria-labelledby="tab-bar" hidden="until-found">
+        <div class="cat">
+          <h3>Signature Cocktails</h3>
+          <ul class="items">
+            <li class="item"><span class="nm"><b>Green Envy</b><em>Floral and fruity, with kiwi and matcha</em></span><span class="pr">₱305</span></li>
+            <li class="item"><span class="nm"><b>Phaya Naga</b><em>Dragon fruit with a hint of herb and chia</em></span><span class="pr">₱275</span></li>
+            <li class="item"><span class="nm"><b>Pittas</b><em>Molasses, fresh basil and pineapple with a twist of Aperol</em></span><span class="pr">₱275</span></li>
+            <li class="item"><span class="nm"><b>Songkran</b><em>Light, sweet and easy, bursting with amaretto</em></span><span class="pr">₱275</span></li>
+            <li class="item"><span class="nm"><b>Pit Nit Noi</b><em>Coconut topped with soda and local lime chili</em></span><span class="pr">₱275</span></li>
+            <li class="item"><span class="nm"><b>Boran Margarita</b><em>With homemade lemongrass cordial</em></span><span class="pr">₱275</span></li>
+          </ul>
+        </div>
+        <div class="cat">
+          <h3>Classic Cocktails</h3>
+          <p class="note">All classics ₱275</p>
+          <ul class="items">
+            <li class="item"><span class="nm"><b>Margarita</b></span><span class="pr">₱275</span></li>
+            <li class="item"><span class="nm"><b>Kamikaze</b></span><span class="pr">₱275</span></li>
+            <li class="item"><span class="nm"><b>Daiquiri</b></span><span class="pr">₱275</span></li>
+            <li class="item"><span class="nm"><b>Old Fashioned</b></span><span class="pr">₱275</span></li>
+            <li class="item"><span class="nm"><b>Mojito</b></span><span class="pr">₱275</span></li>
+            <li class="item"><span class="nm"><b>Dark and Stormy</b></span><span class="pr">₱275</span></li>
+            <li class="item"><span class="nm"><b>Bramble</b></span><span class="pr">₱275</span></li>
+            <li class="item"><span class="nm"><b>Whiskey Sour</b></span><span class="pr">₱275</span></li>
+            <li class="item"><span class="nm"><b>Amaretto Sour</b></span><span class="pr">₱275</span></li>
+          </ul>
+        </div>
+      </div>
+      </div>
+      <div class="menu-foot">
+        <span>Want the full printed menu with photos?</span>
+        <a class="btn btn-dark" href="https://tinyurl.com/MENU2025KafaeBoran" target="_blank" rel="noopener">Open full menu</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section id="gallery">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div><div class="kicker">From our kitchen &amp; bar</div><h2>Gallery</h2></div>
+        <p>Tap a photo to see it bigger.</p>
+      </div>
+      <div class="gallery" id="galleryGrid">
+        <button type="button" class="g-wide g-tall" aria-haspopup="dialog"><img src="images/all-day-breakfast.jpg" alt="All-day breakfast rice meals" loading="lazy" srcset="images/all-day-breakfast-800.jpg 800w, images/all-day-breakfast.jpg 1600w" sizes="(max-width: 860px) 100vw, 580px" width="1600" height="1067"><span>All-day breakfast</span></button>
+        <button type="button" aria-haspopup="dialog"><img src="images/signature-cocktails.jpg" alt="Pittas, Boran Margarita, Phaya Naga and Pit Nit Noi cocktails" loading="lazy" width="800" height="533"><span>Signature cocktails</span></button>
+        <button type="button" class="g-tall" aria-haspopup="dialog"><img src="images/green-envy.jpg" alt="Green Envy cocktail" loading="lazy" width="800" height="533"><span>Green Envy</span></button>
+        <button type="button" aria-haspopup="dialog"><img src="images/grilled-spare-ribs.jpg" alt="Grilled spare ribs in Thai chili sauce" loading="lazy" width="799" height="532"><span>Grilled spare ribs</span></button>
+        <button type="button" aria-haspopup="dialog"><img src="images/fried-pompano.jpg" alt="Fried pompano with lemon butter sauce" loading="lazy" width="800" height="533"><span>Fried pompano</span></button>
+        <button type="button" class="g-wide" aria-haspopup="dialog"><img src="images/pasta-trio.jpg" alt="Baked penne, bolognese and carbonara" loading="lazy" srcset="images/pasta-trio-800.jpg 800w, images/pasta-trio.jpg 1600w" sizes="(max-width: 860px) 100vw, 580px" width="1600" height="1067"><span>Pasta</span></button>
+        <button type="button" aria-haspopup="dialog"><img src="images/boran-burger.jpg" alt="Boran Burger with fries" loading="lazy" width="800" height="533"><span>Boran Burger</span></button>
+        <button type="button" aria-haspopup="dialog"><img src="images/waffle-my-day.jpg" alt="Waffle My Day with bacon, egg and fruit" loading="lazy" width="800" height="533"><span>Waffle My Day</span></button>
+        <button type="button" aria-haspopup="dialog"><img src="images/fruit-sum-tum-salad.jpg" alt="Fruit Sum-Tum salad" loading="lazy" width="800" height="533"><span>Fruit Sum-Tum</span></button>
+        <button type="button" class="g-wide" aria-haspopup="dialog"><img src="images/drinks-sapparot-tropical-sunset.jpg" alt="Sapparot Soda, Tropical Sunset and Nam Hom Kiwi" loading="lazy" srcset="images/drinks-sapparot-tropical-sunset-800.jpg 800w, images/drinks-sapparot-tropical-sunset.jpg 1200w" sizes="(max-width: 860px) 100vw, 580px" width="1200" height="1600"><span>Sapparot &amp; Tropical Sunset</span></button>
+        <button type="button" class="g-wide" aria-haspopup="dialog"><img src="images/appetizer-spread.jpg" alt="Sandwiches, mozzarella nuggets and Tod Mun Pla" loading="lazy" srcset="images/appetizer-spread-800.jpg 800w, images/appetizer-spread.jpg 1599w" sizes="(max-width: 860px) 100vw, 580px" width="1599" height="1066"><span>Appetizers</span></button>
+        <button type="button" aria-haspopup="dialog"><img src="images/grilled-breast-chicken.jpg" alt="Grilled breast chicken with BBQ sauce" loading="lazy" width="800" height="533"><span>Grilled chicken</span></button>
+        <button type="button" aria-haspopup="dialog"><img src="images/mango-pomelo-salad.jpg" alt="Mango and pomelo salad" loading="lazy" width="800" height="533"><span>Mango &amp; Pomelo salad</span></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section class="reviews" id="reviews">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div><div class="kicker">What guests say</div><h2>Loved on Google</h2></div>
+      </div>
+      <div class="rev-grid">
+        <div class="score reveal">
+          <b>4.5</b>
+          <div class="stars">★★★★½</div>
+          <p>Average from 55 reviews on Google Maps</p>
+        </div>
+        <div class="rev-list">
+          <!-- Real Google reviewers (first name + initial only). Do not add quotes unless the owner approves using them. -->
+          <div class="review reveal"><div class="avatar">A</div><div><strong>Alexandra C.</strong><br><small>Google review</small></div></div>
+          <div class="review reveal"><div class="avatar">N</div><div><strong>Noelle</strong><br><small>Google review · Local Guide</small></div></div>
+          <div class="review reveal"><div class="avatar">S</div><div><strong>Shawn C.</strong><br><small>Google review · Local Guide</small></div></div>
+          <div class="review cta reveal">
+            <div><strong>Dined with us?</strong><small>Tell others about your visit.</small></div>
+            <a class="btn btn-gold" style="padding:11px 18px;font-size:13px" href="https://search.google.com/local/writereview?placeid=ChIJfW_K4ujBATMR5eJ-N6o4qCE" target="_blank" rel="noopener">Write a review</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VISIT -->
+  <section class="visit" id="visit">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><div class="kicker">Visit us</div><h2>Find KAFAE BORAN</h2></div>
+      </div>
+      <div class="loc-grid">
+        <div class="map">
+          <iframe title="KAFAE BORAN on Google Maps" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+            src="https://maps.google.com/maps?q=Kafae%20Boran%2C%20RC%20Intino%20Building%2C%20Butuan%20City&ll=8.9572503,125.5399257&z=17&output=embed"></iframe>
+        </div>
+        <div class="loc-card">
+          <div><small>Address</small><p>Left Wing, RC Intino Bldg 2, Montilla Blvd, Brgy. Ong Yiu, Butuan City 8600</p></div>
+          <div>
+            <small>Hours</small>
+            <table class="hours" id="hoursTable">
+              <tr data-d="1"><td>Monday</td><td>10 AM – 12 MN</td></tr>
+              <tr data-d="2"><td>Tuesday</td><td>10 AM – 12 MN</td></tr>
+              <tr data-d="3"><td>Wednesday</td><td>10 AM – 12 MN</td></tr>
+              <tr data-d="4"><td>Thursday</td><td>10 AM – 12 MN</td></tr>
+              <tr data-d="5"><td>Friday</td><td>10 AM – 12 MN</td></tr>
+              <tr data-d="6"><td>Saturday</td><td>10 AM – 1 AM</td></tr>
+              <tr data-d="0"><td>Sunday</td><td>10 AM – 1 AM</td></tr>
+            </table>
+          </div>
+          <div><small>Call</small><p><a href="tel:+639171563102">0917 156 3102</a></p></div>
+          <a class="btn btn-dark" href="https://www.google.com/maps/dir/?api=1&destination=8.9572503,125.5399257&destination_place_id=ChIJfW_K4ujBATMR5eJ-N6o4qCE" target="_blank" rel="noopener">Get directions</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="wrap">
+      <div class="kicker">Reservations &amp; orders</div>
+      <h2>Save a table<br><span class="gold-text">or a whole cake.</span></h2>
+      <p class="lead">Message us your name, date, time and number of guests to reserve. Whole cakes are on the menu too: just ask which ones are available.</p>
+      <div class="ctas">
+        <a class="btn btn-gold" href="https://m.me/100095023802641" target="_blank" rel="noopener">Message on Facebook</a>
+        <a class="btn btn-line" href="tel:+639171563102">Call 0917 156 3102</a>
+      </div>
+      <div class="contact-links">
+        <a href="https://www.facebook.com/profile.php?id=100095023802641" target="_blank" rel="noopener">Facebook</a>
+        <a href="https://www.instagram.com/kafaeboran.bxu" target="_blank" rel="noopener">Instagram @kafaeboran.bxu</a>
+        <a href="https://tinyurl.com/MENU2025KafaeBoran" target="_blank" rel="noopener">Full menu</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© <span id="yr"></span> KAFAE BORAN · The Ancient Coffee · Butuan City</span>
+    <span>Watermark by <a href="https://kendamin.github.io" target="_blank" rel="noopener">Ken Abuda</a></span>
+  </div>
+</footer>
+
+<nav class="mbar" aria-label="Quick actions">
+  <a href="tel:+639171563102"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>Call</a>
+  <a href="https://m.me/100095023802641" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 12a9 9 0 0 1-13.5 7.8L3 21l1.2-4.5A9 9 0 1 1 21 12z"/></svg>Message</a>
+  <a href="https://www.google.com/maps/dir/?api=1&destination=8.9572503,125.5399257&destination_place_id=ChIJfW_K4ujBATMR5eJ-N6o4qCE" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 21s-7-6.2-7-12a7 7 0 0 1 14 0c0 5.8-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>Directions</a>
+</nav>
+
+<dialog class="lightbox" id="lightbox" closedby="any" aria-label="Photo viewer">
+  <figure>
+    <img id="lbImg" alt="" fetchpriority="low">
+    <figcaption id="lbCap"></figcaption>
+  </figure>
+  <form method="dialog"><button aria-label="Close photo" autofocus>✕</button></form>
+</dialog>
+
+<script>
+  /* OPEN NOW (Philippine time). Opens 10 AM daily; closes 12 MN Mon–Fri, 1 AM after Sat & Sun. */
+  (function(){
+    const now = new Date(new Date().toLocaleString("en-US",{timeZone:"Asia/Manila"}));
+    const d = now.getDay(), m = now.getHours()*60 + now.getMinutes();
+    const lateNight = d => d === 6 || d === 0; // Saturday & Sunday open until 1 AM
+    const yesterday = (d + 6) % 7;
+    const open = m >= 600 || (m < 60 && lateNight(yesterday));
+    const el = document.getElementById("status"), txt = document.getElementById("statusText");
+    if (open) { el.classList.add("open"); txt.textContent = "Open now · until " + (lateNight(m < 60 ? yesterday : d) ? "1 AM" : "12 MN"); }
+    else txt.textContent = "Closed now · opens 10 AM";
+    const row = document.querySelector(`#hoursTable tr[data-d="${d}"]`); if (row) row.classList.add("today");
+  })();
+
+  /* MENU TABS: selection follows focus; panels use hidden="until-found" so find-in-page still finds every dish */
+  const tabs = [...document.querySelectorAll('.tab')];
+  const panelFor = tab => document.getElementById(tab.id.replace('tab-', 'panel-'));
+  const nativeFocusgroup = Object.hasOwn(HTMLElement.prototype, 'focusGroup');
+  function selectTab(tab) {
+    for (const t of tabs) {
+      const on = t === tab, panel = panelFor(t);
+      t.setAttribute('aria-selected', on);
+      t.toggleAttribute('focusgroupstart', on);
+      if (!nativeFocusgroup) t.tabIndex = on ? 0 : -1;
+      if (on) { panel.hidden = false; panel.tabIndex = 0; }
+      else { panel.hidden = 'until-found'; panel.removeAttribute('tabindex'); }
+    }
+    tab.scrollIntoView({ block: 'nearest', inline: 'nearest', container: 'nearest' });
+  }
+  tabs.forEach(t => {
+    t.addEventListener('click', () => selectTab(t));
+    t.addEventListener('focus', () => { if (t.getAttribute('aria-selected') !== 'true') selectTab(t); });
+    panelFor(t).addEventListener('beforematch', () => selectTab(t));
+  });
+  // Arrow keys where native focusgroup isn't available yet (no polyfill dependency)
+  if (!nativeFocusgroup) {
+    tabs.forEach(t => { t.tabIndex = t.getAttribute('aria-selected') === 'true' ? 0 : -1; });
+    document.querySelector('.tabs').addEventListener('keydown', e => {
+      const i = tabs.indexOf(document.activeElement); if (i < 0) return;
+      const next = { ArrowRight: i + 1, ArrowLeft: i - 1, Home: 0, End: tabs.length - 1 }[e.key];
+      if (next === undefined) return;
+      e.preventDefault();
+      tabs[(next + tabs.length) % tabs.length].focus();
+    });
+  }
+
+  /* LIGHTBOX: native <dialog> gives Esc, back gesture, focus trap and focus return */
+  const lb = document.getElementById("lightbox"), lbImg = document.getElementById("lbImg"), lbCap = document.getElementById("lbCap");
+  document.getElementById("galleryGrid").addEventListener("click", e => {
+    const img = e.target.closest("button")?.querySelector("img"); if (!img) return;
+    lbImg.src = img.currentSrc.replace("-800.jpg", ".jpg"); lbImg.alt = img.alt; lbCap.textContent = img.alt;
+    lb.showModal();
+  });
+  // closedby="any" fallback (Safari): close when the press and release both land outside the photo
+  if (!('closedBy' in HTMLDialogElement.prototype)) {
+    const outside = e => { const r = lb.getBoundingClientRect(); return e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom; };
+    let pressedOutside = false;
+    lb.addEventListener('pointerdown', e => { pressedOutside = outside(e); });
+    lb.addEventListener('pointerup', e => { if (pressedOutside && outside(e)) lb.close(); });
+  }
+
+  /* HEADER */
+  const header = document.getElementById("top");
+  const onScroll = () => header.classList.toggle("scrolled", scrollY > 40);
+  addEventListener("scroll", onScroll, {passive:true}); onScroll();
+  document.getElementById("yr").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
