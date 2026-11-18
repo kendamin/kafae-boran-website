@@ -218,6 +218,29 @@
     section{padding:72px 0}
   }
 
+  /* Message chooser: native modal <dialog>. Facebook/Messenger's in-app browser often won't hand
+     m.me links to the Messenger app, so we offer the app link, the web link and phone options. */
+  .msg{margin:auto;border:0;padding:0;border-radius:22px;width:min(420px,calc(100dvw - 24px));max-width:none;background:var(--cream);color:var(--ink);box-shadow:0 30px 80px rgba(0,0,0,.45)}
+  .msg:modal{overscroll-behavior:contain}
+  .msg::backdrop{background:rgba(10,7,4,.7);overflow:hidden;overscroll-behavior:contain}
+  .msg-inner{padding:24px 22px 22px;display:grid;gap:12px}
+  .msg-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+  .msg h2{font-size:22px;letter-spacing:.06em;color:var(--ink)}
+  .msg-head p{color:var(--ink-soft);font-size:14px;margin-top:4px}
+  .msg-head form{flex:none}
+  .msg-close{width:40px;height:40px;aspect-ratio:1;padding:0;border-radius:50%;border:1px solid #D9C7A6;background:#fff;color:var(--ink);font-size:17px;line-height:1;cursor:pointer;display:grid;place-items:center}
+  .msg .btn{width:100%;touch-action:manipulation}
+  .btn-outline{border-color:#CDB893;color:var(--ink);background:#fff}
+  .btn-outline:hover{background:var(--cream-2)}
+  .msg-note{font-size:14px;color:var(--ink);background:var(--cream-2);border-radius:12px;padding:10px 12px;line-height:1.45;display:grid;gap:4px}
+  .msg-note-small{font-size:12px;color:var(--ink-soft)}
+  .msg [hidden]{display:none}
+  .msg :where(a:any-link,button):focus-visible{outline-color:#7A5414}
+  @media (max-width:600px){
+    .msg:modal{margin:auto auto 0;width:100dvw;max-width:100dvw;border-radius:22px 22px 0 0}
+    .msg-inner{padding-bottom:max(22px,env(safe-area-inset-bottom))}
+  }
+
   /* Scroll-driven entry effect, CSS only (scroll-entry-exit-effects guide).
      Decorative, so no JS fallback: unsupported browsers just show the content. */
   @media(prefers-reduced-motion:no-preference){
@@ -715,6 +738,24 @@
   <a href="https://www.google.com/maps/dir/?api=1&destination=8.9572503,125.5399257&destination_place_id=ChIJfW_K4ujBATMR5eJ-N6o4qCE" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 21s-7-6.2-7-12a7 7 0 0 1 14 0c0 5.8-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>Directions</a>
 </nav>
 
+<dialog class="msg" id="msgDialog" closedby="any" aria-labelledby="msg-title">
+  <div class="msg-inner">
+    <div class="msg-head">
+      <div><h2 id="msg-title">Message KAFAE BORAN</h2><p>Reserve a table, order a whole cake or ask a question.</p></div>
+      <form method="dialog"><button class="msg-close" aria-label="Close">✕</button></form>
+    </div>
+    <!-- opens the Messenger app directly (phones only; shown by the script) -->
+    <a class="btn btn-gold" id="msgApp" hidden href="fb-messenger://user-thread/100095023802641">Open Messenger app</a>
+    <a class="btn btn-dark" id="msgWeb" href="https://m.me/100095023802641" target="_blank" rel="noopener">Message on Facebook</a>
+    <a class="btn btn-outline" href="tel:+639171563102">Call 0917 156 3102</a>
+    <a class="btn btn-outline" href="sms:+639171563102">Send a text</a>
+    <div class="msg-note" id="msgNote" hidden>
+      <p>See <strong>"Get the Messenger app"</strong>? Tap <strong>Open in Messenger</strong> below it instead.</p>
+      <p class="msg-note-small">Still not opening? Tap <strong>•••</strong> and choose <strong>Open in browser</strong>.</p>
+    </div>
+  </div>
+</dialog>
+
 <dialog class="lightbox" id="lightbox" closedby="any" aria-label="Photo viewer">
   <figure>
     <img id="lbImg" alt="" fetchpriority="low">
@@ -782,6 +823,27 @@
     let pressedOutside = false;
     lb.addEventListener('pointerdown', e => { pressedOutside = outside(e); });
     lb.addEventListener('pointerup', e => { if (pressedOutside && outside(e)) lb.close(); });
+  }
+
+  /* MESSAGE CHOOSER: every m.me button opens the chooser instead of jumping straight to Facebook.
+     Without JavaScript the plain m.me links still work. */
+  const msgDialog = document.getElementById("msgDialog");
+  const isPhone = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent) || (navigator.maxTouchPoints > 1 && /Macintosh/.test(navigator.userAgent));
+  const inFacebookApp = /FBAN|FBAV|FB_IAB|FBIOS|Messenger|Instagram/i.test(navigator.userAgent);
+  if (isPhone) document.getElementById("msgApp").hidden = false;           // app link only works on phones
+  if (inFacebookApp) document.getElementById("msgNote").hidden = false;   // tip only where the problem happens
+  document.addEventListener("click", e => {
+    const a = e.target.closest('a[href^="https://m.me/"]');
+    if (!a || msgDialog.contains(a)) return;
+    e.preventDefault();
+    msgDialog.showModal();
+    msgDialog.querySelector(".btn:not([hidden])")?.focus();          // start on the main action, not ✕
+  });
+  if (!("closedBy" in HTMLDialogElement.prototype)) {             // Safari: tap outside to close
+    let downOutside = false;
+    const outside = e => { const r = msgDialog.getBoundingClientRect(); return e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom; };
+    msgDialog.addEventListener("pointerdown", e => { downOutside = outside(e); });
+    msgDialog.addEventListener("pointerup", e => { if (downOutside && outside(e)) msgDialog.close(); });
   }
 
   /* HEADER */
