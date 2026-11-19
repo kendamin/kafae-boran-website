@@ -63,6 +63,8 @@
   .index ul{list-style:none;margin:0;padding:0;columns:2;column-gap:18px}
   .index a{display:block;padding:5px 0;text-decoration:none;color:#E9DCC6;font-size:15px}
   .index a:hover{color:#F3D58F}
+  .index .index__full{columns:1;display:grid;gap:6px;margin-bottom:6px}
+  .index .index__full a{padding:10px 14px;border:1px solid #4A3727;border-radius:12px;font-weight:500}
 
   /* ------------------------------------------------------------------ labels */
   /* One schema for every object on the page: name, course, the menu's own words, price. */
@@ -136,11 +138,25 @@
   @media (max-width:760px){ .hang{grid-template-columns:1fr 1fr} .hang .obj:nth-child(n){grid-column:auto;margin-top:0} .hang .obj:nth-child(2){grid-column:1 / -1} }
 
   /* full lists: the rest of the collection, labelled the same way */
-  .catalogue{margin-top:var(--sc-8);border-top:1px solid var(--sc-hairline-strong)}
-  .catalogue > summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:20px 0;font-family:var(--sc-font-display);font-weight:600;font-size:var(--sc-t-lg);letter-spacing:.04em}
+  /* Full-menu toggles: a clear, tappable card with a real "Show menu" button, not a quiet "+" line */
+  .catalogue{margin-top:var(--sc-8);scroll-margin-top:calc(var(--bar-h) + 12px)}
+  .catalogue > summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;
+    padding:20px 24px;border:1.5px solid color-mix(in oklab,var(--sc-accent) 70%,transparent);border-radius:18px;
+    background:color-mix(in oklab,var(--sc-accent) 9%,var(--sc-canvas));box-shadow:var(--sc-e1);transition:background-color 160ms var(--sc-ease-out)}
   .catalogue > summary::-webkit-details-marker{display:none}
-  .catalogue > summary::after{content:"+";font-family:var(--sc-font-text);font-size:28px;color:var(--sc-accent);line-height:1;transition:transform 200ms var(--sc-ease-out)}
-  .catalogue[open] > summary::after{transform:rotate(45deg)}
+  @media (hover:hover) and (pointer:fine){ .catalogue > summary:hover{background:color-mix(in oklab,var(--sc-accent) 16%,var(--sc-canvas))} }
+  .cat-sum{display:grid;gap:2px}
+  .cat-sum__k{font-size:12px;letter-spacing:.22em;text-transform:uppercase;font-weight:600;color:var(--sc-accent)}
+  .cat-sum__t{font-family:var(--sc-font-display);font-weight:600;font-size:var(--sc-t-lg);letter-spacing:.04em;line-height:1.2}
+  .cat-sum__n{font-size:14px;color:var(--sc-ink-soft)}
+  .cat-btn{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:10px 20px;border-radius:999px;background:var(--gold-grad);color:#1A1209;font-weight:600;font-size:14px;letter-spacing:.05em;white-space:nowrap}
+  .cat-btn::after{content:"";width:8px;height:8px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:translateY(-2px) rotate(45deg);transition:transform 200ms var(--sc-ease-out)}
+  .catalogue[open] .cat-btn::after{transform:translateY(2px) rotate(-135deg)}
+  .cat-btn__hide{display:none}
+  .catalogue[open] .cat-btn__show{display:none}
+  .catalogue[open] .cat-btn__hide{display:inline}
+  .catalogue[open] > summary{border-radius:18px 18px 18px 18px;margin-bottom:var(--sc-6)}
+  @media (max-width:520px){ .catalogue > summary{padding:16px 18px} .cat-btn{width:100%;justify-content:center} }
   .catalogue__body{columns:2;column-gap:var(--sc-8);padding-bottom:var(--sc-6)}
   @media (max-width:820px){ .catalogue__body{columns:1} }
   .cat{break-inside:avoid;margin-bottom:var(--sc-6)}
@@ -258,7 +274,7 @@
   .qty button{width:32px;height:32px;border-radius:50%;border:1px solid #D9C7A6;background:#fff;cursor:pointer;font-size:16px;line-height:1}
   .sheet .btn--line{color:#241A11;border-color:#CDB893}
   .sheet .btn{width:100%}
-  .note{font-size:13px;color:#4A3A2A;background:#F2E6D0;border-radius:12px;padding:10px 12px;line-height:1.45;margin:0}
+  .sheet .note{font-size:13px;color:#4A3A2A;background:#F2E6D0;border-radius:12px;padding:10px 12px;line-height:1.45;margin:0}
   .sheet [hidden]{display:none}
   @media (max-width:600px){
     .sheet:modal{margin:auto auto 0;width:100dvw;max-width:100dvw;border-radius:20px 20px 0 0}
@@ -288,12 +304,14 @@
 <header class="bar">
   <a class="mark" href="#top" aria-label="KAFAE BORAN, back to top"><img src="assets/logo-mark.png" alt="" width="280" height="570"><b>KAFAE BORAN</b></a>
   <div class="bar__r">
-    <button class="btn btn--ghost" type="button" popovertarget="index">Index</button>
+    <button class="btn btn--ghost" type="button" popovertarget="index">Menu</button>
     <a class="btn btn--gold" href="https://m.me/100095023802641" target="_blank" rel="noopener">Reserve a table</a>
   </div>
 </header>
 
-<nav class="index" id="index" popover aria-label="Collection index">
+<nav class="index" id="index" popover aria-label="Menu">
+  <h2>Full menu</h2>
+  <ul class="index__full"><li><a href="#list-coffee">Coffee, tea &amp; smoothies</a></li><li><a href="#list-food">Thai kitchen</a></li><li><a href="#sweet">Desserts &amp; cakes</a></li><li><a href="#list-bar">Cocktails</a></li></ul>
   <h2>The table</h2>
   <ul><li><a href="#top">Tom Ka Gai</a></li></ul>
   <h2>Coffee bar</h2>
@@ -366,7 +384,7 @@
         </figure>
       </div>
       <details class="catalogue" id="list-coffee">
-        <summary>All coffee, tea &amp; smoothies</summary>
+        <summary><span class="cat-sum"><span class="cat-sum__k">Full menu</span><span class="cat-sum__t">Coffee, tea &amp; smoothies</span><span class="cat-sum__n">55 items, every price listed</span></span><span class="cat-btn"><span class="cat-btn__show">Show menu</span><span class="cat-btn__hide">Hide menu</span></span></summary>
         <div class="catalogue__body">
 <div class="cat"><h3>Espresso Based</h3><ul class="rows"><li><span class="nm"><b>Espresso</b></span><button class="px" type="button" data-add="Espresso (Hot)" data-price="130"><small>Hot</small>₱130</button></li><li><span class="nm"><b>Cafe Americano</b></span><button class="px" type="button" data-add="Cafe Americano (Hot)" data-price="130"><small>Hot</small>₱130</button><button class="px" type="button" data-add="Cafe Americano (Iced)" data-price="140"><small>Iced</small>₱140</button></li><li><span class="nm"><b>Long Black</b></span><button class="px" type="button" data-add="Long Black (Hot)" data-price="130"><small>Hot</small>₱130</button><button class="px" type="button" data-add="Long Black (Iced)" data-price="140"><small>Iced</small>₱140</button></li><li><span class="nm"><b>Cafe Latte</b></span><button class="px" type="button" data-add="Cafe Latte (Hot)" data-price="150"><small>Hot</small>₱150</button><button class="px" type="button" data-add="Cafe Latte (Iced)" data-price="160"><small>Iced</small>₱160</button></li><li><span class="nm"><b>Flat White</b></span><button class="px" type="button" data-add="Flat White (Hot)" data-price="150"><small>Hot</small>₱150</button></li><li><span class="nm"><b>Cortado</b></span><button class="px" type="button" data-add="Cortado (Hot)" data-price="150"><small>Hot</small>₱150</button></li><li><span class="nm"><b>Spanish Latte</b></span><button class="px" type="button" data-add="Spanish Latte (Hot)" data-price="160"><small>Hot</small>₱160</button><button class="px" type="button" data-add="Spanish Latte (Iced)" data-price="180"><small>Iced</small>₱180</button></li><li><span class="nm"><b>Cappuccino</b></span><button class="px" type="button" data-add="Cappuccino (Hot)" data-price="150"><small>Hot</small>₱150</button><button class="px" type="button" data-add="Cappuccino (Iced)" data-price="160"><small>Iced</small>₱160</button></li><li><span class="nm"><b>Mocha Sidam</b></span><button class="px" type="button" data-add="Mocha Sidam (Hot)" data-price="160"><small>Hot</small>₱160</button><button class="px" type="button" data-add="Mocha Sidam (Iced)" data-price="180"><small>Iced</small>₱180</button></li><li><span class="nm"><b>Caramel Latte</b></span><button class="px" type="button" data-add="Caramel Latte (Hot)" data-price="160"><small>Hot</small>₱160</button><button class="px" type="button" data-add="Caramel Latte (Iced)" data-price="180"><small>Iced</small>₱180</button></li><li><span class="nm"><b>Salted Caramel</b></span><button class="px" type="button" data-add="Salted Caramel (Hot)" data-price="170"><small>Hot</small>₱170</button><button class="px" type="button" data-add="Salted Caramel (Iced)" data-price="190"><small>Iced</small>₱190</button></li><li><span class="nm"><b>White Mocha</b></span><button class="px" type="button" data-add="White Mocha (Hot)" data-price="160"><small>Hot</small>₱160</button><button class="px" type="button" data-add="White Mocha (Iced)" data-price="180"><small>Iced</small>₱180</button></li></ul></div>
 <div class="cat"><h3>New at Kafae Boran</h3><ul class="rows"><li><span class="nm"><b>Kafae Coconut Latte</b></span><button class="px" type="button" data-add="Kafae Coconut Latte" data-price="195">₱195</button></li><li><span class="nm"><b>Kafae Oreo Matcha</b></span><button class="px" type="button" data-add="Kafae Oreo Matcha" data-price="195">₱195</button></li><li><span class="nm"><b>Wan-Man Matcha · Matcha Maphrao</b></span><button class="px" type="button" data-add="Wan-Man Matcha · Matcha Maphrao" data-price="195">₱195</button></li><li><span class="nm"><b>Kafae Pitchers</b><em>Pink Lemonade, Iced Tea or Cucumber Lemonade</em></span><button class="px" type="button" data-add="Kafae Pitchers" data-price="260">₱260</button></li><li><span class="nm"><b>Sapparot Soda</b></span><button class="px" type="button" data-add="Sapparot Soda" data-price="195">₱195</button></li><li><span class="nm"><b>Tropical Sunset</b></span><button class="px" type="button" data-add="Tropical Sunset" data-price="205">₱205</button></li><li><span class="nm"><b>Nam Hom Kiwi</b></span><button class="px" type="button" data-add="Nam Hom Kiwi" data-price="185">₱185</button></li></ul></div>
@@ -419,7 +437,7 @@
   <section class="room--teak kitchen-list">
     <div class="sc-wrap">
       <details class="catalogue" id="list-food">
-        <summary>The whole kitchen</summary>
+        <summary><span class="cat-sum"><span class="cat-sum__k">Full menu</span><span class="cat-sum__t">The Thai kitchen</span><span class="cat-sum__n">47 items, every price listed</span></span><span class="cat-btn"><span class="cat-btn__show">Show menu</span><span class="cat-btn__hide">Hide menu</span></span></summary>
         <div class="catalogue__body">
 <div class="cat"><h3>Thai Soup</h3><ul class="rows"><li><span class="nm"><b>Tom Yam</b></span><button class="px" type="button" data-add="Tom Yam" data-price="495">₱495</button></li><li><span class="nm"><b>Tom Ka Gai</b></span><button class="px" type="button" data-add="Tom Ka Gai" data-price="525">₱525</button></li></ul></div>
 <div class="cat"><h3>Main Course</h3><ul class="rows"><li><span class="nm"><b>Cajun Shrimp</b></span><button class="px" type="button" data-add="Cajun Shrimp" data-price="530">₱530</button></li><li><span class="nm"><b>Thai Green Curry Chicken</b></span><button class="px" type="button" data-add="Thai Green Curry Chicken" data-price="460">₱460</button></li><li><span class="nm"><b>Steamed Pompano</b></span><button class="px" type="button" data-add="Steamed Pompano" data-price="595">₱595</button></li><li><span class="nm"><b>Fried Fish &amp; Lemon Butter Sauce</b><em>With mango tomato salsa</em></span><button class="px" type="button" data-add="Fried Fish &amp; Lemon Butter Sauce" data-price="385">₱385</button></li><li><span class="nm"><b>Fried Pompano w/ Lemon Butter Sauce</b></span><button class="px" type="button" data-add="Fried Pompano w/ Lemon Butter Sauce" data-price="520">₱520</button></li><li><span class="nm"><b>Deep Fried Thai Chicken in Tamarind Sauce</b></span><button class="px" type="button" data-add="Deep Fried Thai Chicken in Tamarind Sauce" data-price="355">₱355</button></li><li><span class="nm"><b>Crispy Pork Bagnet</b><em>Coco cream sauce &amp; shrimp paste</em></span><button class="px" type="button" data-add="Crispy Pork Bagnet" data-price="420">₱420</button></li><li><span class="nm"><b>Grilled Spare Ribs in Thai Chili Sauce</b><em>Topped with pineapple &amp; tomato</em></span><button class="px" type="button" data-add="Grilled Spare Ribs in Thai Chili Sauce" data-price="465">₱465</button></li><li><span class="nm"><b>Orange Fried Pork Chop</b><em>Garlic mustard sauce</em></span><button class="px" type="button" data-add="Orange Fried Pork Chop" data-price="420">₱420</button></li><li><span class="nm"><b>Salt &amp; Pepper Beef Brisket</b></span><button class="px" type="button" data-add="Salt &amp; Pepper Beef Brisket" data-price="540">₱540</button></li><li><span class="nm"><b>Stir Fried Beef w/ Sweet Ginger Soya Sauce</b></span><button class="px" type="button" data-add="Stir Fried Beef w/ Sweet Ginger Soya Sauce" data-price="420">₱420</button></li><li><span class="nm"><b>Grilled Breast Chicken w/ BBQ Sauce</b></span><button class="px" type="button" data-add="Grilled Breast Chicken w/ BBQ Sauce" data-price="385">₱385</button></li><li><span class="nm"><b>Khao Pad (Thai Fried Rice)</b></span><button class="px" type="button" data-add="Khao Pad (Thai Fried Rice)" data-price="285">₱285</button></li><li><span class="nm"><b>Spring Rolls</b></span><button class="px" type="button" data-add="Spring Rolls" data-price="250">₱250</button></li><li><span class="nm"><b>Stir Fried Chicken</b></span><button class="px" type="button" data-add="Stir Fried Chicken" data-price="405">₱405</button></li><li><span class="nm"><b>Thai Crispy Pork Belly</b></span><button class="px" type="button" data-add="Thai Crispy Pork Belly" data-price="385">₱385</button></li><li><span class="nm"><b>Thai Grilled Beef Salad</b></span><button class="px" type="button" data-add="Thai Grilled Beef Salad" data-price="415">₱415</button></li></ul></div>
@@ -482,7 +500,7 @@
   <section class="room--night kitchen-list">
     <div class="sc-wrap">
       <details class="catalogue" id="list-bar">
-        <summary>All cocktails</summary>
+        <summary><span class="cat-sum"><span class="cat-sum__k">Full menu</span><span class="cat-sum__t">Cocktails</span><span class="cat-sum__n">15 items, every price listed</span></span><span class="cat-btn"><span class="cat-btn__show">Show menu</span><span class="cat-btn__hide">Hide menu</span></span></summary>
         <div class="catalogue__body">
 <div class="cat"><h3>Signature Cocktails</h3><ul class="rows"><li><span class="nm"><b>Green Envy</b><em>Floral and fruity, with kiwi and matcha</em></span><button class="px" type="button" data-add="Green Envy" data-price="305">₱305</button></li><li><span class="nm"><b>Phaya Naga</b><em>Dragon fruit with a hint of herb and chia</em></span><button class="px" type="button" data-add="Phaya Naga" data-price="275">₱275</button></li><li><span class="nm"><b>Pittas</b><em>Molasses, fresh basil and pineapple with a twist of Aperol</em></span><button class="px" type="button" data-add="Pittas" data-price="275">₱275</button></li><li><span class="nm"><b>Songkran</b><em>Light, sweet and easy, bursting with amaretto</em></span><button class="px" type="button" data-add="Songkran" data-price="275">₱275</button></li><li><span class="nm"><b>Pit Nit Noi</b><em>Coconut topped with soda and local lime chili</em></span><button class="px" type="button" data-add="Pit Nit Noi" data-price="275">₱275</button></li><li><span class="nm"><b>Boran Margarita</b><em>With homemade lemongrass cordial</em></span><button class="px" type="button" data-add="Boran Margarita" data-price="275">₱275</button></li></ul></div>
 <div class="cat"><h3>Classic Cocktails</h3><p class="note">All classics ₱275</p><ul class="rows"><li><span class="nm"><b>Margarita</b></span><button class="px" type="button" data-add="Margarita" data-price="275">₱275</button></li><li><span class="nm"><b>Kamikaze</b></span><button class="px" type="button" data-add="Kamikaze" data-price="275">₱275</button></li><li><span class="nm"><b>Daiquiri</b></span><button class="px" type="button" data-add="Daiquiri" data-price="275">₱275</button></li><li><span class="nm"><b>Old Fashioned</b></span><button class="px" type="button" data-add="Old Fashioned" data-price="275">₱275</button></li><li><span class="nm"><b>Mojito</b></span><button class="px" type="button" data-add="Mojito" data-price="275">₱275</button></li><li><span class="nm"><b>Dark and Stormy</b></span><button class="px" type="button" data-add="Dark and Stormy" data-price="275">₱275</button></li><li><span class="nm"><b>Bramble</b></span><button class="px" type="button" data-add="Bramble" data-price="275">₱275</button></li><li><span class="nm"><b>Whiskey Sour</b></span><button class="px" type="button" data-add="Whiskey Sour" data-price="275">₱275</button></li><li><span class="nm"><b>Amaretto Sour</b></span><button class="px" type="button" data-add="Amaretto Sour" data-price="275">₱275</button></li></ul></div></div>
@@ -678,6 +696,10 @@
       d.addEventListener("pointerdown", e => { down = out(e); }); d.addEventListener("pointerup", e => { if (down && out(e)) d.close(); });
     }
   }
+  /* Any link to a full-menu list (Menu button, index) opens that list */
+  function openList(hash){ const d = hash && document.querySelector(hash); if (d && d.tagName === "DETAILS") d.open = true; }
+  document.addEventListener("click", e => { const a = e.target.closest('a[href^="#list-"]'); if (a) openList(a.getAttribute("href")); });
+  addEventListener("hashchange", () => openList(location.hash)); openList(location.hash);
   /* index popover closes when a link is chosen */
   document.getElementById("index").addEventListener("click", e => { if (e.target.closest("a")) e.currentTarget.hidePopover(); });
 </script>
