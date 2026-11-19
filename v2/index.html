@@ -1,0 +1,684 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<!-- Concept preview: keep out of Google until KAFAE BORAN approves. -->
+<meta name="robots" content="noindex, nofollow">
+<title>KAFAE BORAN · Thai-inspired café &amp; bar, Butuan City</title>
+<meta name="description" content="KAFAE BORAN, The Ancient Coffee. Coffee, a Thai kitchen, desserts and a cocktail bar on Montilla Blvd, Butuan City. Open daily from 10 AM.">
+<meta name="theme-color" content="#15100B">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="scrollcraft.css">
+<style>
+  /* Six colours, two faces. Dark rooms carry the bright gold, cream rooms the deep gold:
+     one hue, two lightnesses (taste.md: two-stop accent on a page that cuts light/dark). */
+  :root{
+    --sc-canvas:#15100B; --sc-surface:#21170F; --sc-ink:#F6EEDF; --sc-ink-soft:#C9B9A0;
+    --sc-accent:#E3BE72; --sc-accent-ink:#1A1209;
+    --sc-font-display:"Cinzel", Georgia, serif;
+    --sc-font-text:"Jost", system-ui, sans-serif;
+    --sc-shadow-color: 28 45% 4%;
+    --gold-grad:linear-gradient(135deg,#F3D58F 0%,#D4AA5E 48%,#A87A2C 100%);
+    --bar-h:68px;
+  }
+  .room--light{ --sc-canvas:#F7EFDF; --sc-surface:#FFFFFF; --sc-ink:#241A11; --sc-ink-soft:#66543F;
+    --sc-accent:#86601C; --sc-accent-ink:#FFF8EC; --sc-shadow-color: 32 30% 30%; color:var(--sc-ink); background:var(--sc-canvas); }
+  .room--dark{ color:var(--sc-ink); background:var(--sc-canvas); }
+  .room--teak{ --sc-canvas:#2A1B11; --sc-surface:#36241A; color:var(--sc-ink); background:var(--sc-canvas); }
+  .room--night{ --sc-canvas:#0B0806; --sc-surface:#16100C; color:var(--sc-ink); background:var(--sc-canvas); }
+  .room--sweet{ --sc-canvas:#F2E2C7; }
+
+  body{ background:#15100B; }
+  .sc-display{ font-weight:600; letter-spacing:0.02em; line-height:1.02; }
+  h2.sc-display{ font-size:var(--sc-t-2xl); }
+  .vh:where(:not(:focus-within,:active)){position:absolute!important;clip-path:inset(50%)!important;overflow:hidden!important;width:1px!important;height:1px!important;margin:-1px!important;padding:0!important;border:0!important;white-space:nowrap!important}
+  .skip{position:fixed;top:10px;left:10px;z-index:200;background:var(--gold-grad);color:#1A1209;padding:10px 16px;border-radius:999px;font-weight:600;text-decoration:none}
+  main:focus{outline:none}
+
+  /* ---------------------------------------------------------- the bar (chrome) */
+  .bar{position:fixed;inset:0 0 auto;z-index:var(--sc-z-chrome);height:var(--bar-h);display:flex;align-items:center;justify-content:space-between;gap:12px;padding-inline:var(--sc-gutter);
+    background:linear-gradient(to bottom, rgba(13,9,6,.78), rgba(13,9,6,0)); color:#F6EEDF}
+  .mark{display:flex;align-items:center;gap:10px;text-decoration:none}
+  .mark img{height:38px;width:auto}
+  .mark b{font-family:var(--sc-font-display);font-weight:600;letter-spacing:.16em;font-size:15px}
+  .bar__r{display:flex;gap:8px;align-items:center}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:11px 20px;border-radius:999px;font-weight:600;font-size:14px;letter-spacing:.05em;text-decoration:none;border:1px solid transparent;cursor:pointer;white-space:nowrap;transition:transform 140ms var(--sc-ease-out),background-color 160ms var(--sc-ease-out),box-shadow 160ms var(--sc-ease-out)}
+  .btn:active{transform:scale(.97)}
+  .btn--gold{background:var(--gold-grad);color:#1A1209;box-shadow:0 6px 18px -6px rgba(212,170,94,.55)}
+  .btn--ghost{border-color:rgba(240,208,138,.5);color:#F3D58F;background:rgba(13,9,6,.35)}
+  .btn--ink{background:var(--sc-ink);color:var(--sc-canvas)}
+  .btn--line{border-color:color-mix(in oklab,var(--sc-ink) 30%,transparent);color:var(--sc-ink);background:transparent}
+  @media (hover:hover) and (pointer:fine){ .btn--gold:hover{box-shadow:0 10px 26px -6px rgba(212,170,94,.7)} .btn--ghost:hover,.btn--line:hover{background:color-mix(in oklab,var(--sc-ink) 8%,transparent)} }
+  .btn:disabled{opacity:.45;cursor:not-allowed}
+
+  /* index popover: the nav of a collection is its object index */
+  .index{margin:0;inset:var(--bar-h) var(--sc-gutter) auto auto;width:min(420px,calc(100vw - 24px));max-height:calc(100dvh - var(--bar-h) - 24px);overflow:auto;
+    border:1px solid #3A2A1D;border-radius:18px;background:#1B130D;color:#F6EEDF;padding:20px 22px;box-shadow:0 30px 70px rgba(0,0,0,.5)}
+  .index h2{font-family:var(--sc-font-display);font-size:13px;letter-spacing:.24em;color:#E3BE72;margin:16px 0 6px}
+  .index h2:first-child{margin-top:0}
+  .index ul{list-style:none;margin:0;padding:0;columns:2;column-gap:18px}
+  .index a{display:block;padding:5px 0;text-decoration:none;color:#E9DCC6;font-size:15px}
+  .index a:hover{color:#F3D58F}
+
+  /* ------------------------------------------------------------------ labels */
+  /* One schema for every object on the page: name, course, the menu's own words, price. */
+  .label{display:grid;gap:4px;max-width:30rem}
+  .label__name{font-family:var(--sc-font-display);font-weight:600;font-size:var(--sc-t-lg);letter-spacing:.03em;line-height:1.15;margin:0}
+  .label__meta{font-size:var(--sc-t-xs);letter-spacing:.2em;text-transform:uppercase;color:var(--sc-accent);font-weight:600;margin:0}
+  .label__desc{color:var(--sc-ink-soft);font-size:var(--sc-t-sm);margin:0;text-wrap:pretty}
+  .label__row{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+
+  /* price chips are the signature's input: tap a price, it lands on your table */
+  .px{display:inline-flex;align-items:center;gap:6px;min-height:36px;padding:6px 12px;border-radius:999px;border:1px solid color-mix(in oklab,var(--sc-accent) 55%,transparent);
+    background:transparent;color:var(--sc-ink);font-family:var(--sc-font-display);font-weight:600;font-size:14px;cursor:pointer;font-variant-numeric:tabular-nums;
+    transition:background-color 160ms var(--sc-ease-out),transform 120ms var(--sc-ease-out)}
+  .px::after{content:"+";font-family:var(--sc-font-text);font-weight:500;color:var(--sc-accent);font-size:16px;line-height:1}
+  .px small{font-family:var(--sc-font-text);font-weight:500;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--sc-ink-soft)}
+  .px:active{transform:scale(.96)}
+  .px.is-added{background:color-mix(in oklab,var(--sc-accent) 22%,transparent)}
+  @media (hover:hover) and (pointer:fine){ .px:hover{background:color-mix(in oklab,var(--sc-accent) 14%,transparent)} }
+
+  /* ------------------------------------------------------------ 1 · the table */
+  .hero{ --mx:0; --my:0; }
+  .hero .sc-stage{background:#0E0A07}
+  .plane{position:absolute;max-width:none;pointer-events:none}
+  .p-far{inset:-6%;width:112%;height:112%;object-fit:cover}
+  .hero h1{position:absolute;z-index:3;left:var(--sc-gutter);top:clamp(5.5rem,17vh,10rem);margin:0;
+    font-family:var(--sc-font-display);font-weight:600;font-size:clamp(4rem,12.5vw,13rem);line-height:.9;letter-spacing:.04em;color:#F1CF85;
+    text-shadow:0 6px 30px rgba(10,6,3,.55)}
+  .hero h1 span{display:block}
+  .hero h1 span + span{padding-left:.55em}
+  .p-pot{z-index:4;width:clamp(240px,26vw,400px);left:62%;top:30%;filter:drop-shadow(0 26px 30px rgba(6,4,2,.65))}
+  .p-steam{z-index:5;width:clamp(140px,13vw,210px);left:calc(62% + clamp(60px,6vw,104px));top:-3%;opacity:.9}
+  /* the near plane rises up the right side and overtakes the sharp pot, never the copy column */
+  .p-near{z-index:7;width:clamp(360px,40vw,640px);right:-14%;bottom:-52%;opacity:.95}
+  .hero__scrim{position:absolute;inset:0;z-index:2;pointer-events:none;
+    background:linear-gradient(90deg, rgba(12,8,5,.9) 0%, rgba(12,8,5,.72) 34%, rgba(12,8,5,.25) 56%, transparent 72%)}
+  .hero__copy{position:absolute;z-index:8;left:var(--sc-gutter);bottom:clamp(2.5rem,9vh,6rem);max-width:min(30rem,80vw);display:grid;gap:16px}
+  .hero__copy .sc-lede{color:#F6EEDF}
+  .hero{--h1:clamp(4rem,10.5vw,10.8rem); --h1top:clamp(5.5rem,17vh,10rem)}
+  .hero h1{font-size:var(--h1)!important;top:var(--h1top)!important}
+  .hero__label{position:absolute;z-index:8;left:calc(var(--sc-gutter) + .2rem);top:calc(var(--h1top) + var(--h1) * 1.9);max-width:16rem}
+  .hero__beat{position:absolute;z-index:8;left:var(--sc-gutter);bottom:clamp(2.5rem,9vh,6rem);max-width:24rem}
+  .hero__beat p{font-family:var(--sc-font-display);font-size:var(--sc-t-xl);line-height:1.2;color:#F6EEDF;margin:0}
+  @media (prefers-reduced-motion:no-preference){
+    .p-far  {transform:translate3d(calc(var(--mx) * -8px), calc(var(--sc-p,0) * -40px + var(--my) * -6px),0) scale(calc(1.08 - var(--sc-p,0) * .08))}
+    .p-pot  {transform:translate3d(calc(var(--mx) * -16px), calc(var(--sc-p,0) * -120px + var(--my) * -10px),0) rotate(calc(var(--sc-p,0) * 14deg))}
+    .p-steam{transform:translate3d(calc(var(--mx) * -22px), calc(var(--sc-p,0) * -300px),0) scale(calc(.9 + var(--sc-p,0) * .5));opacity:calc(.92 - var(--sc-p,0) * 1.1)}
+    .p-near {transform:translate3d(calc(var(--mx) * -34px), calc(var(--sc-p,0) * -560px + var(--my) * -14px),0) rotate(calc(var(--sc-p,0) * -10deg))}
+    .hero h1{transform:translate3d(0, calc(var(--sc-p,0) * -70px),0)}
+  }
+  @media (max-width:760px){
+    .hero{--h1:clamp(3.1rem,17vw,6rem); --h1top:calc(var(--bar-h) + 10px)}
+    .p-pot{width:min(50vw,250px);left:44%;top:31%}
+    .p-steam{width:min(26vw,120px);left:calc(44% + 14vw);top:17%}
+    .p-near{width:min(76vw,380px);right:-54%;bottom:-48%}
+    .hero__scrim{background:linear-gradient(to bottom, rgba(12,8,5,.85) 0%, rgba(12,8,5,.4) 32%, transparent 48%, transparent 58%, rgba(12,8,5,.92) 82%)}
+    .hero__copy{bottom:calc(84px + env(safe-area-inset-bottom));right:var(--sc-gutter)}
+    .hero__beat{right:var(--sc-gutter);bottom:calc(84px + env(safe-area-inset-bottom))}
+  }
+
+  /* --------------------------------------------------------- 2 · coffee bar */
+  .room-head{display:grid;gap:10px;margin-bottom:var(--sc-8)}
+  .room-head .sc-body{color:var(--sc-ink-soft)}
+  .hang{display:grid;grid-template-columns:repeat(12,1fr);gap:var(--sc-6) var(--sc-5);align-items:start}
+  .obj{display:grid;gap:14px;margin:0}
+  .obj img{width:100%;height:auto;border-radius:6px;box-shadow:var(--sc-e2)}
+  .hang .obj:nth-child(1){grid-column:1 / span 4}
+  .hang .obj:nth-child(2){grid-column:6 / span 6;margin-top:var(--sc-9)}
+  .hang .obj:nth-child(3){grid-column:2 / span 5;margin-top:calc(var(--sc-8) * -1)}
+  .hang .obj:nth-child(4){grid-column:8 / span 4;margin-top:var(--sc-6)}
+  @media (max-width:760px){ .hang{grid-template-columns:1fr 1fr} .hang .obj:nth-child(n){grid-column:auto;margin-top:0} .hang .obj:nth-child(2){grid-column:1 / -1} }
+
+  /* full lists: the rest of the collection, labelled the same way */
+  .catalogue{margin-top:var(--sc-8);border-top:1px solid var(--sc-hairline-strong)}
+  .catalogue > summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:20px 0;font-family:var(--sc-font-display);font-weight:600;font-size:var(--sc-t-lg);letter-spacing:.04em}
+  .catalogue > summary::-webkit-details-marker{display:none}
+  .catalogue > summary::after{content:"+";font-family:var(--sc-font-text);font-size:28px;color:var(--sc-accent);line-height:1;transition:transform 200ms var(--sc-ease-out)}
+  .catalogue[open] > summary::after{transform:rotate(45deg)}
+  .catalogue__body{columns:2;column-gap:var(--sc-8);padding-bottom:var(--sc-6)}
+  @media (max-width:820px){ .catalogue__body{columns:1} }
+  .cat{break-inside:avoid;margin-bottom:var(--sc-6)}
+  .cat h3{font-family:var(--sc-font-display);font-size:15px;letter-spacing:.2em;margin:0 0 4px;color:var(--sc-accent)}
+  .cat .note{font-size:13px;color:var(--sc-ink-soft);margin:0 0 8px;font-style:italic}
+  .rows{list-style:none;margin:0;padding:0}
+  .rows li{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px dashed var(--sc-hairline-strong)}
+  .rows .nm{flex:1;min-width:0}
+  .rows .nm b{font-weight:500}
+  .rows .nm em{display:block;font-style:normal;font-size:13px;color:var(--sc-ink-soft);line-height:1.4}
+  .rows .px{min-height:32px;padding:4px 10px;font-size:13px}
+  .rows .gap{width:64px;text-align:center;color:var(--sc-ink-soft)}
+
+  /* ------------------------------------------------------- 3 · thai kitchen */
+  .kitchen .sc-stage{display:flex;align-items:center}
+  .rail{gap:clamp(18px,2.4vw,36px);padding-inline:var(--sc-gutter);align-items:center}
+  .rail__lead{flex:none;width:clamp(16rem,26vw,24rem);display:grid;gap:14px}
+  .dish{flex:none;width:clamp(15rem,26vw,24rem);display:grid;gap:14px}
+  .dish img{width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;border-radius:6px;box-shadow:var(--sc-e3)}
+  .dish:nth-of-type(even){transform:translateY(clamp(18px,4vh,46px))}
+  .rail__note{flex:none;width:clamp(14rem,22vw,20rem);font-family:var(--sc-font-display);font-size:var(--sc-t-lg);line-height:1.3;color:var(--sc-ink-soft)}
+  @media (prefers-reduced-motion:no-preference){
+    .dish{opacity:clamp(.55, calc((var(--sc-p,0) * 9) - var(--i,0) + 1.6), 1)}
+  }
+  .kitchen-list{padding-block:0 var(--sc-8)}
+
+  /* ------------------------------------------------------- 4 · sweet things */
+  .sweet__grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:var(--sc-8);align-items:start}
+  .sweet__fig{margin:0;position:relative}
+  .sweet__fig img{width:100%;height:auto;border-radius:220px 220px 8px 8px;box-shadow:var(--sc-e3)}
+  .sweet__fig .label{margin-top:16px}
+  .sweet__side{display:grid;gap:var(--sc-6);padding-top:var(--sc-7)}
+  @media (max-width:820px){ .sweet__grid{grid-template-columns:1fr} .sweet__side{padding-top:0} }
+
+  /* --------------------------------------------------- 5 · the bar, the peak */
+  .bar-act .sc-stage{background:#0B0806}
+  .bar-hush{position:absolute;inset:0;display:grid;place-items:center;z-index:3;padding:var(--sc-gutter)}
+  .bar-hush p{font-family:var(--sc-font-display);font-size:var(--sc-t-xl);color:#C9B9A0;text-align:center;max-width:22ch;margin:0}
+  .smoke{position:absolute;z-index:1;width:clamp(320px,40vw,620px);left:50%;bottom:-10%;translate:-50% 0;opacity:0;max-width:none;pointer-events:none}
+  .glow{position:absolute;inset:0;z-index:0;background:radial-gradient(60% 55% at 50% 62%, rgba(227,190,114,.16), transparent 70%);opacity:0}
+  @media (prefers-reduced-motion:no-preference){
+    .smoke{opacity:calc(min(var(--sc-p,0) * 3, 1) * .42 - max(var(--sc-p,0) - .7, 0) * 1.2);transform:translate3d(0, calc(var(--sc-p,0) * -46vh),0) scale(calc(1 + var(--sc-p,0) * .6))}
+    .glow{opacity:clamp(0, calc(var(--sc-p,0) * 2.6 - .4), 1)}
+  }
+  @media (prefers-reduced-motion:reduce){ .smoke{opacity:.35} .glow{opacity:1} }
+  .drinks{position:absolute;inset:calc(var(--bar-h) + 2vh) var(--sc-gutter) 4vh;z-index:4;display:grid;grid-template-columns:1fr 1.25fr 1fr;gap:clamp(16px,3vw,48px);align-items:end}
+  .drink{display:grid;gap:12px;margin:0}
+  .drink img{width:100%;height:auto;max-height:52vh;object-fit:cover;border-radius:200px 200px 8px 8px;box-shadow:0 30px 60px -20px rgba(0,0,0,.8)}
+  .drink--hero img{max-height:62vh;aspect-ratio:2/3}
+  .drink:not(.drink--hero) img{aspect-ratio:3/4}
+  .drink .label{max-width:22rem;padding:10px 12px 12px;margin:-4px -12px 0;border-radius:10px;background:rgba(11,8,6,.84)}
+  @media (max-width:760px){
+    .drinks{grid-template-columns:1fr 1fr;grid-template-rows:auto auto;align-items:end;inset:calc(var(--bar-h) + 8px) 16px calc(76px + env(safe-area-inset-bottom))}
+    .drink--hero{grid-column:1 / -1;grid-row:1;justify-self:center;width:62%}
+    .drink img{max-height:19vh}
+    .drink--hero img{max-height:30vh}
+    .drink .label{padding:6px 8px 8px}
+    .drink .label__name{font-size:var(--sc-t-base)}
+    .drink .label__desc{display:none}
+  }
+
+  /* ------------------------------------------------------ 6 · your table */
+  .close{padding-block:var(--sc-section) var(--sc-8)}
+  .close__grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:var(--sc-8);align-items:start}
+  @media (max-width:860px){ .close__grid{grid-template-columns:1fr} }
+  .ticket{background:#FBF4E6;color:#241A11;border-radius:14px;padding:28px 26px;box-shadow:var(--sc-e3);display:grid;gap:14px;position:relative}
+  .ticket::before{content:"";position:absolute;inset:auto 0 100% 0;height:10px;background:radial-gradient(circle at 8px 10px, transparent 6px, #FBF4E6 6.5px) 0 0/16px 10px repeat-x}
+  .ticket h2{font-family:var(--sc-font-display);font-size:var(--sc-t-xl);letter-spacing:.06em;margin:0}
+  .ticket .meta{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#86601C;font-weight:600;margin:0}
+  .ticket ol{list-style:none;margin:0;padding:0;display:grid;gap:6px;font-variant-numeric:tabular-nums}
+  .ticket li{display:flex;gap:10px;justify-content:space-between;border-bottom:1px dashed #D9C7A6;padding-bottom:6px}
+  .ticket .total{display:flex;justify-content:space-between;font-family:var(--sc-font-display);font-weight:700;font-size:var(--sc-t-lg)}
+  .ticket .empty{color:#66543F;margin:0}
+  .ticket .fine{font-size:12px;color:#66543F;margin:0}
+  .ticket .btns{display:flex;flex-wrap:wrap;gap:10px}
+  .ticket .btn--line{color:#241A11;border-color:#CDB893}
+  .visit{display:grid;gap:var(--sc-6)}
+  .visit dl{display:grid;grid-template-columns:auto 1fr;gap:6px 18px;margin:0}
+  .visit dt{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--sc-accent);font-weight:600;padding-top:3px}
+  .visit dd{margin:0}
+  .hours{width:100%;border-collapse:collapse}
+  .hours td{padding:4px 0;border-bottom:1px dashed var(--sc-hairline-strong)}
+  .hours td:last-child{text-align:right}
+  .hours tr.today td{color:#F3D58F;font-weight:600}
+  .map{border-radius:14px;overflow:hidden;border:1px solid var(--sc-hairline-strong);aspect-ratio:16/10;background:#21170F}
+  .map iframe{width:100%;height:100%;border:0;display:block}
+  .rating{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+  .rating b{font-family:var(--sc-font-display);font-size:40px;color:#F3D58F;line-height:1}
+  .foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;margin-top:var(--sc-9);padding-top:var(--sc-5);border-top:1px solid var(--sc-hairline);font-size:13px;color:var(--sc-ink-soft)}
+  .foot a{color:#F3D58F;text-decoration:none}
+
+  /* ------------------------------------------------- the tab (signature) */
+  .tab{position:fixed;z-index:calc(var(--sc-z-chrome) + 1);right:var(--sc-gutter);bottom:20px;display:flex;align-items:center;gap:12px;min-height:52px;padding:8px 10px 8px 18px;border-radius:999px;
+    background:#FBF4E6;color:#241A11;border:1px solid #D9C7A6;box-shadow:0 18px 40px -12px rgba(0,0,0,.55);cursor:pointer;font-weight:600;
+    transform:translateY(24px);opacity:0;visibility:hidden;pointer-events:none;
+    transition:transform 360ms var(--sc-ease-out),opacity 240ms var(--sc-ease-out),visibility 0s 360ms}
+  .tab.is-on{transform:none;opacity:1;visibility:visible;pointer-events:auto;transition:transform 360ms var(--sc-ease-out),opacity 240ms var(--sc-ease-out)}
+  .tab b{font-family:var(--sc-font-display);font-variant-numeric:tabular-nums}
+  .tab .n{display:grid;place-items:center;min-width:34px;height:34px;padding:0 8px;border-radius:999px;background:var(--gold-grad);color:#1A1209;font-variant-numeric:tabular-nums}
+  .tab.bump{animation:bump 420ms var(--sc-ease-out)}
+  @keyframes bump{30%{transform:translateY(-6px) scale(1.04)}}
+  @media (prefers-reduced-motion:reduce){ .tab{transition:none} .tab.bump{animation:none} }
+
+  .sheet{margin:auto;border:0;padding:0;border-radius:20px;width:min(440px,calc(100dvw - 24px));max-width:none;background:#FBF4E6;color:#241A11;box-shadow:0 30px 80px rgba(0,0,0,.45)}
+  .sheet:modal{overscroll-behavior:contain}
+  .sheet::backdrop{background:rgba(10,7,4,.7);overflow:hidden;overscroll-behavior:contain}
+  .sheet__in{padding:22px;display:grid;gap:12px;max-height:calc(100dvh - 40px);overflow:auto}
+  .sheet__head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+  .sheet h2{font-family:var(--sc-font-display);font-size:22px;letter-spacing:.06em;margin:0}
+  .sheet__head p{margin:4px 0 0;font-size:14px;color:#66543F}
+  .x{width:40px;height:40px;aspect-ratio:1;padding:0;border-radius:50%;border:1px solid #D9C7A6;background:#fff;color:#241A11;font-size:17px;cursor:pointer;display:grid;place-items:center;flex:none}
+  .lines{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+  .lines li{display:grid;grid-template-columns:1fr auto auto;align-items:center;gap:10px;border-bottom:1px dashed #D9C7A6;padding-bottom:8px}
+  .qty{display:flex;align-items:center;gap:6px}
+  .qty button{width:32px;height:32px;border-radius:50%;border:1px solid #D9C7A6;background:#fff;cursor:pointer;font-size:16px;line-height:1}
+  .sheet .btn--line{color:#241A11;border-color:#CDB893}
+  .sheet .btn{width:100%}
+  .note{font-size:13px;color:#4A3A2A;background:#F2E6D0;border-radius:12px;padding:10px 12px;line-height:1.45;margin:0}
+  .sheet [hidden]{display:none}
+  @media (max-width:600px){
+    .sheet:modal{margin:auto auto 0;width:100dvw;max-width:100dvw;border-radius:20px 20px 0 0}
+    .sheet__in{padding-bottom:max(22px,env(safe-area-inset-bottom))}
+  }
+
+  /* mobile quick bar */
+  .mbar{display:none}
+  @media (max-width:760px){
+    body{padding-bottom:70px}
+    .mbar{display:grid;grid-template-columns:repeat(3,1fr);position:fixed;left:0;right:0;bottom:0;z-index:var(--sc-z-chrome);background:rgba(21,16,11,.97);border-top:1px solid #3A2A1D;padding:8px 8px calc(8px + env(safe-area-inset-bottom))}
+    .mbar a{display:flex;flex-direction:column;align-items:center;gap:3px;font-size:12px;letter-spacing:.06em;text-decoration:none;color:#F6EEDF;padding:6px 0;border-radius:10px}
+    .mbar a:first-child{background:var(--gold-grad);color:#1A1209;font-weight:600}
+    .mbar svg{width:20px;height:20px}
+    .tab{bottom:calc(78px + env(safe-area-inset-bottom));right:12px}
+    .bar .btn--gold{display:none}
+  }
+  :where(a:any-link,button,summary):focus-visible{outline:3px solid #F3D58F;outline-offset:3px}
+  .room--light :where(a:any-link,button,summary):focus-visible,.sheet :where(a,button):focus-visible,.ticket :where(a,button):focus-visible{outline-color:#7A5414}
+</style>
+</head>
+<body>
+<a class="skip vh" href="#main">Skip to main content</a>
+<span data-sc-progress></span>
+<div class="sc-grain" aria-hidden="true"></div>
+
+<header class="bar">
+  <a class="mark" href="#top" aria-label="KAFAE BORAN, back to top"><img src="assets/logo-mark.png" alt="" width="280" height="570"><b>KAFAE BORAN</b></a>
+  <div class="bar__r">
+    <button class="btn btn--ghost" type="button" popovertarget="index">Index</button>
+    <a class="btn btn--gold" href="https://m.me/100095023802641" target="_blank" rel="noopener">Reserve a table</a>
+  </div>
+</header>
+
+<nav class="index" id="index" popover aria-label="Collection index">
+  <h2>The table</h2>
+  <ul><li><a href="#top">Tom Ka Gai</a></li></ul>
+  <h2>Coffee bar</h2>
+  <ul><li><a href="#o-coconut">Coconut Latte</a></li><li><a href="#o-oreo">Oreo Matcha</a></li><li><a href="#o-flight">Wan-Man Matcha</a></li><li><a href="#o-pitchers">Kafae Pitchers</a></li><li><a href="#list-coffee">Full drinks list</a></li></ul>
+  <h2>Thai kitchen</h2>
+  <ul><li><a href="#kitchen">Pad Thai</a></li><li><a href="#kitchen">Spare Ribs</a></li><li><a href="#kitchen">Pompano</a></li><li><a href="#kitchen">Breakfast</a></li><li><a href="#list-food">Full food list</a></li></ul>
+  <h2>Sweet things</h2>
+  <ul><li><a href="#sweet">Mango Sticky Rice</a></li><li><a href="#sweet">Cakes by the slice</a></li></ul>
+  <h2>The bar</h2>
+  <ul><li><a href="#bar">Songkran</a></li><li><a href="#bar">Green Envy</a></li><li><a href="#bar">Pittas</a></li><li><a href="#list-bar">Cocktail list</a></li></ul>
+  <h2>Visit</h2>
+  <ul><li><a href="#table">Your table</a></li><li><a href="#visit">Hours &amp; map</a></li></ul>
+</nav>
+
+<main id="main" tabindex="-1">
+
+  <!-- 1 · THE TABLE: pinned layered scene. Far table, the café's name, a sharp pot,
+       gold steam, a blurred pot near the lens. Each plane moves at its own rate. -->
+  <section id="top" class="hero" data-sc-act="pin" data-sc-span="1.7">
+    <div data-sc-stage>
+      <img class="plane p-far" src="assets/table-far.webp" alt="" width="800" height="533" fetchpriority="high">
+      <div class="hero__scrim" aria-hidden="true"></div>
+      <h1 data-sc-cue="0 0.92 0 0.08"><span>Kafae</span><span>Boran</span></h1>
+      <img class="plane p-pot" src="assets/pot-kagai.webp" alt="A pot of Tom Ka Gai seen from above" width="308" height="308">
+      <img class="plane p-steam" src="assets/steam.png" alt="" width="520" height="600">
+      <img class="plane p-near" src="assets/pot-yam-near.webp" alt="" width="592" height="592">
+      <div class="hero__label label" data-sc-cue="0 0.6 0">
+        <p class="label__name">Tom Ka Gai</p>
+        <p class="label__meta">Thai soup</p>
+        <div class="label__row"><button class="px" type="button" data-add="Tom Ka Gai" data-price="525">₱525</button></div>
+      </div>
+      <div class="hero__copy" data-sc-cue="0 0.55 0">
+        <p class="sc-lede">A Thai-inspired café, kitchen and bar on Montilla Blvd, Butuan. Open daily from 10 AM.</p>
+        <div><a class="btn btn--gold" href="https://m.me/100095023802641" target="_blank" rel="noopener">Reserve a table</a></div>
+      </div>
+      <div class="hero__beat" data-sc-cue="0.5 1 0.14 0.1">
+        <p>Everything here is on the menu. Tap a price to add it to your table.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2 · COFFEE BAR: flow, cream daylight, an asymmetric hang -->
+  <section id="coffee" class="room--light sc-section" data-sc-act="flow">
+    <div class="sc-wrap">
+      <div class="room-head sc-stack" data-sc-in data-sc-stagger="60">
+        <h2 class="sc-display">The coffee bar</h2>
+        <p class="sc-body">From 10 AM. Espresso, pour-over, matcha and Thai milk tea.</p>
+      </div>
+      <div class="hang">
+        <figure class="obj" id="o-coconut" data-sc-in>
+          <img src="assets/coconut-latte.jpg" alt="Kafae Coconut Latte in a ribbed glass" width="600" height="800" loading="lazy">
+          <figcaption class="label"><p class="label__name">Kafae Coconut Latte</p><p class="label__meta">Coffee · New</p>
+            <div class="label__row"><button class="px" type="button" data-add="Kafae Coconut Latte" data-price="195">₱195</button></div></figcaption>
+        </figure>
+        <figure class="obj" id="o-flight" data-sc-in>
+          <img src="assets/matcha-flight.jpg" alt="Wan-Man Matcha and Matcha Maphrao on a wooden board" width="800" height="600" loading="lazy">
+          <figcaption class="label"><p class="label__name">Wan-Man Matcha · Matcha Maphrao</p><p class="label__meta">Matcha · New</p>
+            <div class="label__row"><button class="px" type="button" data-add="Wan-Man Matcha / Matcha Maphrao" data-price="195">₱195</button></div></figcaption>
+        </figure>
+        <figure class="obj" id="o-oreo" data-sc-in>
+          <img src="assets/oreo-matcha.jpg" alt="Kafae Oreo Matcha in a tall glass" width="600" height="800" loading="lazy">
+          <figcaption class="label"><p class="label__name">Kafae Oreo Matcha</p><p class="label__meta">Matcha · New</p>
+            <div class="label__row"><button class="px" type="button" data-add="Kafae Oreo Matcha" data-price="195">₱195</button></div></figcaption>
+        </figure>
+        <figure class="obj" id="o-pitchers" data-sc-in>
+          <img src="assets/kafae-pitchers.jpg" alt="Kafae Pitchers: pink lemonade, iced tea and cucumber lemonade" width="600" height="800" loading="lazy">
+          <figcaption class="label"><p class="label__name">Kafae Pitchers</p><p class="label__meta">For sharing · New</p>
+            <p class="label__desc">Pink Lemonade, Iced Tea or Cucumber Lemonade.</p>
+            <div class="label__row"><button class="px" type="button" data-add="Kafae Pitcher" data-price="260">₱260</button></div></figcaption>
+        </figure>
+      </div>
+      <details class="catalogue" id="list-coffee">
+        <summary>All coffee, tea &amp; smoothies</summary>
+        <div class="catalogue__body">
+<div class="cat"><h3>Espresso Based</h3><ul class="rows"><li><span class="nm"><b>Espresso</b></span><button class="px" type="button" data-add="Espresso (Hot)" data-price="130"><small>Hot</small>₱130</button></li><li><span class="nm"><b>Cafe Americano</b></span><button class="px" type="button" data-add="Cafe Americano (Hot)" data-price="130"><small>Hot</small>₱130</button><button class="px" type="button" data-add="Cafe Americano (Iced)" data-price="140"><small>Iced</small>₱140</button></li><li><span class="nm"><b>Long Black</b></span><button class="px" type="button" data-add="Long Black (Hot)" data-price="130"><small>Hot</small>₱130</button><button class="px" type="button" data-add="Long Black (Iced)" data-price="140"><small>Iced</small>₱140</button></li><li><span class="nm"><b>Cafe Latte</b></span><button class="px" type="button" data-add="Cafe Latte (Hot)" data-price="150"><small>Hot</small>₱150</button><button class="px" type="button" data-add="Cafe Latte (Iced)" data-price="160"><small>Iced</small>₱160</button></li><li><span class="nm"><b>Flat White</b></span><button class="px" type="button" data-add="Flat White (Hot)" data-price="150"><small>Hot</small>₱150</button></li><li><span class="nm"><b>Cortado</b></span><button class="px" type="button" data-add="Cortado (Hot)" data-price="150"><small>Hot</small>₱150</button></li><li><span class="nm"><b>Spanish Latte</b></span><button class="px" type="button" data-add="Spanish Latte (Hot)" data-price="160"><small>Hot</small>₱160</button><button class="px" type="button" data-add="Spanish Latte (Iced)" data-price="180"><small>Iced</small>₱180</button></li><li><span class="nm"><b>Cappuccino</b></span><button class="px" type="button" data-add="Cappuccino (Hot)" data-price="150"><small>Hot</small>₱150</button><button class="px" type="button" data-add="Cappuccino (Iced)" data-price="160"><small>Iced</small>₱160</button></li><li><span class="nm"><b>Mocha Sidam</b></span><button class="px" type="button" data-add="Mocha Sidam (Hot)" data-price="160"><small>Hot</small>₱160</button><button class="px" type="button" data-add="Mocha Sidam (Iced)" data-price="180"><small>Iced</small>₱180</button></li><li><span class="nm"><b>Caramel Latte</b></span><button class="px" type="button" data-add="Caramel Latte (Hot)" data-price="160"><small>Hot</small>₱160</button><button class="px" type="button" data-add="Caramel Latte (Iced)" data-price="180"><small>Iced</small>₱180</button></li><li><span class="nm"><b>Salted Caramel</b></span><button class="px" type="button" data-add="Salted Caramel (Hot)" data-price="170"><small>Hot</small>₱170</button><button class="px" type="button" data-add="Salted Caramel (Iced)" data-price="190"><small>Iced</small>₱190</button></li><li><span class="nm"><b>White Mocha</b></span><button class="px" type="button" data-add="White Mocha (Hot)" data-price="160"><small>Hot</small>₱160</button><button class="px" type="button" data-add="White Mocha (Iced)" data-price="180"><small>Iced</small>₱180</button></li></ul></div>
+<div class="cat"><h3>New at Kafae Boran</h3><ul class="rows"><li><span class="nm"><b>Kafae Coconut Latte</b></span><button class="px" type="button" data-add="Kafae Coconut Latte" data-price="195">₱195</button></li><li><span class="nm"><b>Kafae Oreo Matcha</b></span><button class="px" type="button" data-add="Kafae Oreo Matcha" data-price="195">₱195</button></li><li><span class="nm"><b>Wan-Man Matcha · Matcha Maphrao</b></span><button class="px" type="button" data-add="Wan-Man Matcha · Matcha Maphrao" data-price="195">₱195</button></li><li><span class="nm"><b>Kafae Pitchers</b><em>Pink Lemonade, Iced Tea or Cucumber Lemonade</em></span><button class="px" type="button" data-add="Kafae Pitchers" data-price="260">₱260</button></li><li><span class="nm"><b>Sapparot Soda</b></span><button class="px" type="button" data-add="Sapparot Soda" data-price="195">₱195</button></li><li><span class="nm"><b>Tropical Sunset</b></span><button class="px" type="button" data-add="Tropical Sunset" data-price="205">₱205</button></li><li><span class="nm"><b>Nam Hom Kiwi</b></span><button class="px" type="button" data-add="Nam Hom Kiwi" data-price="185">₱185</button></li></ul></div>
+<div class="cat"><h3>Signature</h3><ul class="rows"><li><span class="nm"><b>Koh Samui</b><em>Espresso shots, special dark chocolate, sweet almond and berry syrup</em></span><button class="px" type="button" data-add="Koh Samui" data-price="215">₱215</button></li><li><span class="nm"><b>Khao Yai</b><em>Cookies &amp; cream with espresso shots, caramel sauce and dried berries</em></span><button class="px" type="button" data-add="Khao Yai" data-price="215">₱215</button></li><li><span class="nm"><b>Thai Milk Tea</b></span><button class="px" type="button" data-add="Thai Milk Tea" data-price="185">₱185</button></li></ul></div>
+<div class="cat"><h3>Chama Cha Series</h3><ul class="rows"><li><span class="nm"><b>Classic Matcha</b></span><button class="px" type="button" data-add="Classic Matcha (Hot)" data-price="160"><small>Hot</small>₱160</button><button class="px" type="button" data-add="Classic Matcha (Iced)" data-price="190"><small>Iced</small>₱190</button><button class="px" type="button" data-add="Classic Matcha (Blend)" data-price="215"><small>Blend</small>₱215</button></li><li><span class="nm"><b>Dirty Matcha</b></span><button class="px" type="button" data-add="Dirty Matcha (Hot)" data-price="180"><small>Hot</small>₱180</button><button class="px" type="button" data-add="Dirty Matcha (Iced)" data-price="205"><small>Iced</small>₱205</button></li></ul></div>
+<div class="cat"><h3>Blended Espresso</h3><ul class="rows"><li><span class="nm"><b>Coffee Freeze</b></span><button class="px" type="button" data-add="Coffee Freeze" data-price="195">₱195</button></li><li><span class="nm"><b>Frozen Black Mocha</b></span><button class="px" type="button" data-add="Frozen Black Mocha" data-price="205">₱205</button></li><li><span class="nm"><b>Winter Caramel</b></span><button class="px" type="button" data-add="Winter Caramel" data-price="205">₱205</button></li><li><span class="nm"><b>Frozen White Mocha</b></span><button class="px" type="button" data-add="Frozen White Mocha" data-price="205">₱205</button></li><li><span class="nm"><b>Blended Salted Caramel</b></span><button class="px" type="button" data-add="Blended Salted Caramel" data-price="205">₱205</button></li></ul></div>
+<div class="cat"><h3>Pour Over Brew Bar</h3><p class="note">Single origin, brewed on Kalita or Origami</p><ul class="rows"><li><span class="nm"><b>Local Seasonal</b></span><button class="px" type="button" data-add="Local Seasonal" data-price="130">₱130</button></li><li><span class="nm"><b>Imported Seasonal</b></span><button class="px" type="button" data-add="Imported Seasonal" data-price="150">₱150</button></li></ul></div>
+<div class="cat"><h3>Tea Boran (Hot)</h3><ul class="rows"><li><span class="nm"><b>French Earl Grey</b></span><button class="px" type="button" data-add="French Earl Grey" data-price="160">₱160</button></li><li><span class="nm"><b>English Breakfast</b></span><button class="px" type="button" data-add="English Breakfast" data-price="160">₱160</button></li><li><span class="nm"><b>Lemon Ginger Green Tea</b></span><button class="px" type="button" data-add="Lemon Ginger Green Tea" data-price="160">₱160</button></li><li><span class="nm"><b>Chamomile Garden</b></span><button class="px" type="button" data-add="Chamomile Garden" data-price="160">₱160</button></li></ul></div>
+<div class="cat"><h3>Non-Coffee &amp; Coffee Desserts</h3><ul class="rows"><li><span class="nm"><b>Hot Choco Sidam</b></span><button class="px" type="button" data-add="Hot Choco Sidam" data-price="150">₱150</button></li><li><span class="nm"><b>Iced Choco Sidam</b></span><button class="px" type="button" data-add="Iced Choco Sidam" data-price="170">₱170</button></li><li><span class="nm"><b>Affogato</b></span><button class="px" type="button" data-add="Affogato" data-price="195">₱195</button></li><li><span class="nm"><b>Matcha Gato</b></span><button class="px" type="button" data-add="Matcha Gato" data-price="210">₱210</button></li></ul></div>
+<div class="cat"><h3>Signature Blended (Non-Coffee)</h3><ul class="rows"><li><span class="nm"><b>Aroy</b><em>Special dark chocolate with amaretto and berries</em></span><button class="px" type="button" data-add="Aroy" data-price="205">₱205</button></li><li><span class="nm"><b>Tee Rak</b><em>White chocolate with a twist of apricot</em></span><button class="px" type="button" data-add="Tee Rak" data-price="205">₱205</button></li><li><span class="nm"><b>Wai Jai</b><em>Caramel with a twist of apricot</em></span><button class="px" type="button" data-add="Wai Jai" data-price="205">₱205</button></li><li><span class="nm"><b>O-hoh</b><em>Special dark chocolate with French mint and nuts</em></span><button class="px" type="button" data-add="O-hoh" data-price="205">₱205</button></li><li><span class="nm"><b>Suay</b><em>White chocolate, our take on cookies &amp; cream</em></span><button class="px" type="button" data-add="Suay" data-price="205">₱205</button></li><li><span class="nm"><b>Jing-Jing</b><em>Caramel with hazelnuts and berries</em></span><button class="px" type="button" data-add="Jing-Jing" data-price="205">₱205</button></li></ul></div>
+<div class="cat"><h3>Smoothies</h3><ul class="rows"><li><span class="nm"><b>Kid Teung</b><em>Guava, amaretto, fresh basil &amp; mint</em></span><button class="px" type="button" data-add="Kid Teung" data-price="205">₱205</button></li><li><span class="nm"><b>Phee Naawng</b><em>Dragon fruit, sweet almond, fresh basil &amp; mint</em></span><button class="px" type="button" data-add="Phee Naawng" data-price="205">₱205</button></li><li><span class="nm"><b>Jai</b><em>Mango, caramel, dried apricot and fresh basil</em></span><button class="px" type="button" data-add="Jai" data-price="205">₱205</button></li><li><span class="nm"><b>Mun Chan</b><em>Lychee, orgeat, fresh basil and mint</em></span><button class="px" type="button" data-add="Mun Chan" data-price="205">₱205</button></li><li><span class="nm"><b>Dee Jai Berry</b><em>Blueberry and blackberry with zesty lemon</em></span><button class="px" type="button" data-add="Dee Jai Berry" data-price="205">₱205</button></li></ul></div>
+<div class="cat"><h3>Teas Fizz</h3><p class="note">Carbonated cold brew Earl Grey lavender with fresh herbs and chia</p><ul class="rows"><li><span class="nm"><b>Dragon Fusion</b><em>Dragon fruit, sweet almond and yuzu</em></span><button class="px" type="button" data-add="Dragon Fusion" data-price="170">₱170</button></li><li><span class="nm"><b>Farang Fizz</b><em>Guava, blackberry and yuzu</em></span><button class="px" type="button" data-add="Farang Fizz" data-price="170">₱170</button></li><li><span class="nm"><b>Nan Dok Mai</b><em>Mango, amaretto and yuzu</em></span><button class="px" type="button" data-add="Nan Dok Mai" data-price="170">₱170</button></li><li><span class="nm"><b>Cha Khun</b><em>Lychee, blackberry and yuzu</em></span><button class="px" type="button" data-add="Cha Khun" data-price="170">₱170</button></li><li><span class="nm"><b>Lemonade</b><em>Iced or hot</em></span><button class="px" type="button" data-add="Lemonade" data-price="170">₱170</button></li></ul></div></div>
+      </details>
+    </div>
+  </section>
+
+  <!-- 3 · THAI KITCHEN: pan. Lateral travel reads as range. -->
+  <section id="kitchen" class="kitchen room--teak" data-sc-act="pan" data-sc-span="3.2">
+    <div data-sc-stage>
+      <div class="rail" data-sc-pan="0.04">
+        <div class="rail__lead">
+          <h2 class="sc-display">The Thai kitchen</h2>
+          <p class="sc-body">Lunch until late. Soups, grills, noodles and an all-day breakfast.</p>
+        </div>
+        <article class="dish" style="--i:0"><img src="assets/pad-thai.jpg" alt="Pad Thai with shrimp" width="800" height="533" loading="lazy">
+          <div class="label"><h3 class="label__name">Pad Thai</h3><p class="label__meta">Noodles</p>
+          <div class="label__row"><button class="px" type="button" data-add="Pad Thai" data-price="275">₱275</button></div></div></article>
+        <article class="dish" style="--i:1"><img src="assets/grilled-spare-ribs.jpg" alt="Grilled spare ribs in Thai chili sauce" width="799" height="532" loading="lazy">
+          <div class="label"><h3 class="label__name">Spare Ribs</h3><p class="label__meta">Main course</p><p class="label__desc">Grilled, in Thai chili sauce, topped with pineapple &amp; tomato.</p>
+          <div class="label__row"><button class="px" type="button" data-add="Grilled Spare Ribs in Thai Chili Sauce" data-price="465">₱465</button></div></div></article>
+        <article class="dish" style="--i:2"><img src="assets/fried-pompano.jpg" alt="Fried pompano with lemon butter sauce" width="800" height="533" loading="lazy">
+          <div class="label"><h3 class="label__name">Pompano</h3><p class="label__meta">Main course</p><p class="label__desc">Fried, with lemon butter sauce.</p>
+          <div class="label__row"><button class="px" type="button" data-add="Fried Pompano w/ Lemon Butter Sauce" data-price="520">₱520</button></div></div></article>
+        <article class="dish" style="--i:3"><img src="assets/grilled-breast-chicken.jpg" alt="Grilled breast chicken with BBQ sauce" width="800" height="533" loading="lazy">
+          <div class="label"><h3 class="label__name">Chicken</h3><p class="label__meta">Main course</p><p class="label__desc">Grilled breast, BBQ sauce.</p>
+          <div class="label__row"><button class="px" type="button" data-add="Grilled Breast Chicken w/ BBQ Sauce" data-price="385">₱385</button></div></div></article>
+        <article class="dish" style="--i:4"><img src="assets/all-day-breakfast-800.jpg" alt="All-day breakfast rice meals" width="800" height="534" loading="lazy">
+          <div class="label"><h3 class="label__name">Breakfast</h3><p class="label__meta">All day</p><p class="label__desc">Beef Tapa with plain rice and your choice of egg.</p>
+          <div class="label__row"><button class="px" type="button" data-add="Beef Tapa (plain rice)" data-price="250">₱250</button></div></div></article>
+        <article class="dish" style="--i:5"><img src="assets/fruit-sum-tum-salad.jpg" alt="Fruit Sum-Tum salad" width="800" height="533" loading="lazy">
+          <div class="label"><h3 class="label__name">Sum-Tum</h3><p class="label__meta">Salad</p>
+          <div class="label__row"><button class="px" type="button" data-add="Fruit Sum-Tum Salad" data-price="460">₱460</button></div></div></article>
+        <article class="dish" style="--i:6"><img src="assets/boran-burger.jpg" alt="Boran Burger with fries" width="800" height="533" loading="lazy">
+          <div class="label"><h3 class="label__name">Burger</h3><p class="label__meta">All day</p>
+          <div class="label__row"><button class="px" type="button" data-add="Boran Burger" data-price="280">₱280</button></div></div></article>
+        <p class="rail__note">Thirty more dishes are in the full list below.</p>
+      </div>
+    </div>
+  </section>
+  <section class="room--teak kitchen-list">
+    <div class="sc-wrap">
+      <details class="catalogue" id="list-food">
+        <summary>The whole kitchen</summary>
+        <div class="catalogue__body">
+<div class="cat"><h3>Thai Soup</h3><ul class="rows"><li><span class="nm"><b>Tom Yam</b></span><button class="px" type="button" data-add="Tom Yam" data-price="495">₱495</button></li><li><span class="nm"><b>Tom Ka Gai</b></span><button class="px" type="button" data-add="Tom Ka Gai" data-price="525">₱525</button></li></ul></div>
+<div class="cat"><h3>Main Course</h3><ul class="rows"><li><span class="nm"><b>Cajun Shrimp</b></span><button class="px" type="button" data-add="Cajun Shrimp" data-price="530">₱530</button></li><li><span class="nm"><b>Thai Green Curry Chicken</b></span><button class="px" type="button" data-add="Thai Green Curry Chicken" data-price="460">₱460</button></li><li><span class="nm"><b>Steamed Pompano</b></span><button class="px" type="button" data-add="Steamed Pompano" data-price="595">₱595</button></li><li><span class="nm"><b>Fried Fish &amp; Lemon Butter Sauce</b><em>With mango tomato salsa</em></span><button class="px" type="button" data-add="Fried Fish &amp; Lemon Butter Sauce" data-price="385">₱385</button></li><li><span class="nm"><b>Fried Pompano w/ Lemon Butter Sauce</b></span><button class="px" type="button" data-add="Fried Pompano w/ Lemon Butter Sauce" data-price="520">₱520</button></li><li><span class="nm"><b>Deep Fried Thai Chicken in Tamarind Sauce</b></span><button class="px" type="button" data-add="Deep Fried Thai Chicken in Tamarind Sauce" data-price="355">₱355</button></li><li><span class="nm"><b>Crispy Pork Bagnet</b><em>Coco cream sauce &amp; shrimp paste</em></span><button class="px" type="button" data-add="Crispy Pork Bagnet" data-price="420">₱420</button></li><li><span class="nm"><b>Grilled Spare Ribs in Thai Chili Sauce</b><em>Topped with pineapple &amp; tomato</em></span><button class="px" type="button" data-add="Grilled Spare Ribs in Thai Chili Sauce" data-price="465">₱465</button></li><li><span class="nm"><b>Orange Fried Pork Chop</b><em>Garlic mustard sauce</em></span><button class="px" type="button" data-add="Orange Fried Pork Chop" data-price="420">₱420</button></li><li><span class="nm"><b>Salt &amp; Pepper Beef Brisket</b></span><button class="px" type="button" data-add="Salt &amp; Pepper Beef Brisket" data-price="540">₱540</button></li><li><span class="nm"><b>Stir Fried Beef w/ Sweet Ginger Soya Sauce</b></span><button class="px" type="button" data-add="Stir Fried Beef w/ Sweet Ginger Soya Sauce" data-price="420">₱420</button></li><li><span class="nm"><b>Grilled Breast Chicken w/ BBQ Sauce</b></span><button class="px" type="button" data-add="Grilled Breast Chicken w/ BBQ Sauce" data-price="385">₱385</button></li><li><span class="nm"><b>Khao Pad (Thai Fried Rice)</b></span><button class="px" type="button" data-add="Khao Pad (Thai Fried Rice)" data-price="285">₱285</button></li><li><span class="nm"><b>Spring Rolls</b></span><button class="px" type="button" data-add="Spring Rolls" data-price="250">₱250</button></li><li><span class="nm"><b>Stir Fried Chicken</b></span><button class="px" type="button" data-add="Stir Fried Chicken" data-price="405">₱405</button></li><li><span class="nm"><b>Thai Crispy Pork Belly</b></span><button class="px" type="button" data-add="Thai Crispy Pork Belly" data-price="385">₱385</button></li><li><span class="nm"><b>Thai Grilled Beef Salad</b></span><button class="px" type="button" data-add="Thai Grilled Beef Salad" data-price="415">₱415</button></li></ul></div>
+<div class="cat"><h3>All-Day Breakfast</h3><p class="note">Rice meals with your choice of omelet, sunny side up or scrambled egg</p><ul class="rows"><li><span class="nm"><b>Beef Tapa</b></span><button class="px" type="button" data-add="Beef Tapa (Plain)" data-price="250"><small>Plain</small>₱250</button><button class="px" type="button" data-add="Beef Tapa (Bagoong)" data-price="285"><small>Bagoong</small>₱285</button></li><li><span class="nm"><b>Grilled Hungarian Sausage</b></span><button class="px" type="button" data-add="Grilled Hungarian Sausage (Plain)" data-price="250"><small>Plain</small>₱250</button><button class="px" type="button" data-add="Grilled Hungarian Sausage (Bagoong)" data-price="285"><small>Bagoong</small>₱285</button></li><li><span class="nm"><b>Corned Beef Hash</b></span><button class="px" type="button" data-add="Corned Beef Hash (Plain)" data-price="265"><small>Plain</small>₱265</button><button class="px" type="button" data-add="Corned Beef Hash (Bagoong)" data-price="295"><small>Bagoong</small>₱295</button></li><li><span class="nm"><b>Additional Rice</b></span><button class="px" type="button" data-add="Additional Rice (Plain)" data-price="45"><small>Plain</small>₱45</button><button class="px" type="button" data-add="Additional Rice (Bagoong)" data-price="75"><small>Bagoong</small>₱75</button></li></ul></div>
+<div class="cat"><h3>Non-Rice Meals</h3><ul class="rows"><li><span class="nm"><b>Boran Burger</b></span><button class="px" type="button" data-add="Boran Burger" data-price="280">₱280</button></li><li><span class="nm"><b>Waffle My Day</b></span><button class="px" type="button" data-add="Waffle My Day" data-price="380">₱380</button></li></ul></div>
+<div class="cat"><h3>Pasta</h3><ul class="rows"><li><span class="nm"><b>Bolognese</b></span><button class="px" type="button" data-add="Bolognese" data-price="250">₱250</button></li><li><span class="nm"><b>Carbonara</b></span><button class="px" type="button" data-add="Carbonara" data-price="255">₱255</button></li><li><span class="nm"><b>Sardines Pasta</b></span><button class="px" type="button" data-add="Sardines Pasta" data-price="275">₱275</button></li><li><span class="nm"><b>Baked Penne Pasta</b></span><button class="px" type="button" data-add="Baked Penne Pasta" data-price="255">₱255</button></li><li><span class="nm"><b>Pad Thai</b></span><button class="px" type="button" data-add="Pad Thai" data-price="275">₱275</button></li></ul></div>
+<div class="cat"><h3>Salads</h3><ul class="rows"><li><span class="nm"><b>Bangbang Chicken Salad</b></span><button class="px" type="button" data-add="Bangbang Chicken Salad" data-price="430">₱430</button></li><li><span class="nm"><b>Mango &amp; Pomelo Salad</b></span><button class="px" type="button" data-add="Mango &amp; Pomelo Salad" data-price="430">₱430</button></li><li><span class="nm"><b>Fruit Sum-Tum Salad</b></span><button class="px" type="button" data-add="Fruit Sum-Tum Salad" data-price="460">₱460</button></li></ul></div>
+<div class="cat"><h3>Appetizers</h3><ul class="rows"><li><span class="nm"><b>French Fries</b></span><button class="px" type="button" data-add="French Fries" data-price="145">₱145</button></li><li><span class="nm"><b>Cheesy Quesadilla</b></span><button class="px" type="button" data-add="Cheesy Quesadilla" data-price="240">₱240</button></li><li><span class="nm"><b>Beefy Quesadilla</b></span><button class="px" type="button" data-add="Beefy Quesadilla" data-price="275">₱275</button></li><li><span class="nm"><b>Nachos</b></span><button class="px" type="button" data-add="Nachos" data-price="285">₱285</button></li><li><span class="nm"><b>Chicken Salad Sandwich</b></span><button class="px" type="button" data-add="Chicken Salad Sandwich" data-price="300">₱300</button></li><li><span class="nm"><b>Classic Tuna Sandwich</b></span><button class="px" type="button" data-add="Classic Tuna Sandwich" data-price="280">₱280</button></li><li><span class="nm"><b>Mozzarella Nuggets</b></span><button class="px" type="button" data-add="Mozzarella Nuggets" data-price="330">₱330</button></li><li><span class="nm"><b>Tod Mun Pla (Fish Cake)</b></span><button class="px" type="button" data-add="Tod Mun Pla (Fish Cake)" data-price="350">₱350</button></li></ul></div>
+<div class="cat"><h3>Add-ons</h3><ul class="rows"><li><span class="nm"><b>Omelet</b></span><button class="px" type="button" data-add="Omelet" data-price="70">₱70</button></li><li><span class="nm"><b>Sunny Side Up</b></span><button class="px" type="button" data-add="Sunny Side Up" data-price="60">₱60</button></li><li><span class="nm"><b>Scrambled Egg</b></span><button class="px" type="button" data-add="Scrambled Egg" data-price="60">₱60</button></li><li><span class="nm"><b>Cheese</b></span><button class="px" type="button" data-add="Cheese" data-price="60">₱60</button></li><li><span class="nm"><b>Bread</b></span><button class="px" type="button" data-add="Bread" data-price="40">₱40</button></li><li><span class="nm"><b>Ice Cream</b></span><button class="px" type="button" data-add="Ice Cream" data-price="70">₱70</button></li></ul></div></div>
+      </details>
+    </div>
+  </section>
+
+  <!-- 4 · SWEET THINGS: a reveal. One best seller wiped open big. -->
+  <section id="sweet" class="room--light room--sweet sc-section" data-sc-act="flow">
+    <div class="sc-wrap sweet__grid">
+      <figure class="sweet__fig">
+        <div data-sc-reveal="up" data-sc-reveal-at="0.05 0.42">
+          <img src="assets/mango-sticky-rice-800.jpg" srcset="assets/mango-sticky-rice-800.jpg 800w, assets/mango-sticky-rice.jpg 1066w" sizes="(max-width: 820px) 92vw, 40vw" alt="Mango sticky rice with ripe mango and coconut cream" width="800" height="1200" loading="lazy">
+        </div>
+        <figcaption class="label"><p class="label__name">Mango Sticky Rice</p><p class="label__meta">Dessert · Best seller</p>
+          <div class="label__row"><button class="px" type="button" data-add="Mango Sticky Rice" data-price="250">₱250</button></div></figcaption>
+      </figure>
+      <div class="sweet__side sc-stack" data-sc-in data-sc-stagger="60">
+        <h2 class="sc-display">Something sweet</h2>
+        <p class="sc-body">Our two best sellers, and cakes by the slice or whole. Whole cakes make a good reason to reserve.</p>
+        <div class="label"><p class="label__name">Brownie a la Mode</p><p class="label__meta">Dessert · Best seller</p>
+          <div class="label__row"><button class="px" type="button" data-add="Brownie a la Mode" data-price="250">₱250</button></div></div>
+        
+<div class="cat"><h3>Cakes &amp; Pastries</h3><ul class="rows"><li><span class="nm"><b>Blackout Cake</b></span><button class="px" type="button" data-add="Blackout Cake (Slice)" data-price="250"><small>Slice</small>₱250</button><button class="px" type="button" data-add="Blackout Cake (Whole)" data-price="1800"><small>Whole</small>₱1,800</button></li><li><span class="nm"><b>Almond Sans Rival Cake</b></span><button class="px" type="button" data-add="Almond Sans Rival Cake (Slice)" data-price="255"><small>Slice</small>₱255</button><button class="px" type="button" data-add="Almond Sans Rival Cake (Whole)" data-price="1950"><small>Whole</small>₱1,950</button></li><li><span class="nm"><b>Oreo Cheesecake</b></span><button class="px" type="button" data-add="Oreo Cheesecake (Slice)" data-price="285"><small>Slice</small>₱285</button><button class="px" type="button" data-add="Oreo Cheesecake (Whole)" data-price="2050"><small>Whole</small>₱2,050</button></li><li><span class="nm"><b>Mango Cream Cheese Cake</b></span><button class="px" type="button" data-add="Mango Cream Cheese Cake (Slice)" data-price="280"><small>Slice</small>₱280</button><button class="px" type="button" data-add="Mango Cream Cheese Cake (Whole)" data-price="2000"><small>Whole</small>₱2,000</button></li><li><span class="nm"><b>Carrot Cake</b></span><button class="px" type="button" data-add="Carrot Cake (Slice)" data-price="285"><small>Slice</small>₱285</button><button class="px" type="button" data-add="Carrot Cake (Whole)" data-price="2050"><small>Whole</small>₱2,050</button></li><li><span class="nm"><b>Ube Cheese Cake</b></span><button class="px" type="button" data-add="Ube Cheese Cake (Slice)" data-price="280"><small>Slice</small>₱280</button><button class="px" type="button" data-add="Ube Cheese Cake (Whole)" data-price="2000"><small>Whole</small>₱2,000</button></li><li><span class="nm"><b>Plain Brownies</b></span><button class="px" type="button" data-add="Plain Brownies (Slice)" data-price="130"><small>Slice</small>₱130</button><button class="px" type="button" data-add="Plain Brownies (Whole)" data-price="1400"><small>Whole</small>₱1,400</button></li><li><span class="nm"><b>Cashew Brownies</b></span><button class="px" type="button" data-add="Cashew Brownies (Slice)" data-price="140"><small>Slice</small>₱140</button><button class="px" type="button" data-add="Cashew Brownies (Whole)" data-price="1500"><small>Whole</small>₱1,500</button></li><li><span class="nm"><b>Butterscotch</b></span><button class="px" type="button" data-add="Butterscotch (Slice)" data-price="120"><small>Slice</small>₱120</button><button class="px" type="button" data-add="Butterscotch (Whole)" data-price="1300"><small>Whole</small>₱1,300</button></li></ul></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5 · THE BAR: the peak. Authored hush first, then smoke, then three cocktails out of the dark. -->
+  <section id="bar" class="bar-act room--night" data-sc-act="pin" data-sc-span="4.2">
+    <div data-sc-stage>
+      <div class="glow" aria-hidden="true"></div>
+      <img class="smoke" src="assets/steam.png" alt="" width="520" height="600">
+      <div class="bar-hush" data-sc-cue="0 0.2 0 0.08"><p>After ten, the kitchen slows and the bar wakes up.</p></div>
+      <div class="drinks">
+        <figure class="drink" data-sc-cue="0.24 1 0.1 0.06">
+          <img src="assets/green-envy.jpg" alt="Green Envy cocktail with a white rose" width="800" height="533">
+          <figcaption class="label"><h3 class="label__name">Green Envy</h3><p class="label__meta">Signature cocktail</p><p class="label__desc">Floral, with kiwi and matcha.</p>
+            <div class="label__row"><button class="px" type="button" data-add="Green Envy" data-price="305">₱305</button></div></figcaption>
+        </figure>
+        <figure class="drink drink--hero" data-sc-cue="0.56 1 0.12 0.06">
+          <img src="assets/songkran-800.jpg" srcset="assets/songkran-800.jpg 800w, assets/songkran.jpg 1066w" sizes="(max-width: 760px) 62vw, 34vw" alt="Songkran cocktail in smoke with a rose petal" width="800" height="1200">
+          <figcaption class="label"><h3 class="label__name">Songkran</h3><p class="label__meta">Signature cocktail</p><p class="label__desc">Light and sweet, bursting with amaretto.</p>
+            <div class="label__row"><button class="px" type="button" data-add="Songkran" data-price="275">₱275</button></div></figcaption>
+        </figure>
+        <figure class="drink" data-sc-cue="0.38 1 0.1 0.06">
+          <img src="assets/pittas.jpg" alt="Pittas cocktail with basil" width="800" height="533">
+          <figcaption class="label"><h3 class="label__name">Pittas</h3><p class="label__meta">Signature cocktail</p><p class="label__desc">Molasses, fresh basil, pineapple and a twist of Aperol.</p>
+            <div class="label__row"><button class="px" type="button" data-add="Pittas" data-price="275">₱275</button></div></figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+  <section class="room--night kitchen-list">
+    <div class="sc-wrap">
+      <details class="catalogue" id="list-bar">
+        <summary>All cocktails</summary>
+        <div class="catalogue__body">
+<div class="cat"><h3>Signature Cocktails</h3><ul class="rows"><li><span class="nm"><b>Green Envy</b><em>Floral and fruity, with kiwi and matcha</em></span><button class="px" type="button" data-add="Green Envy" data-price="305">₱305</button></li><li><span class="nm"><b>Phaya Naga</b><em>Dragon fruit with a hint of herb and chia</em></span><button class="px" type="button" data-add="Phaya Naga" data-price="275">₱275</button></li><li><span class="nm"><b>Pittas</b><em>Molasses, fresh basil and pineapple with a twist of Aperol</em></span><button class="px" type="button" data-add="Pittas" data-price="275">₱275</button></li><li><span class="nm"><b>Songkran</b><em>Light, sweet and easy, bursting with amaretto</em></span><button class="px" type="button" data-add="Songkran" data-price="275">₱275</button></li><li><span class="nm"><b>Pit Nit Noi</b><em>Coconut topped with soda and local lime chili</em></span><button class="px" type="button" data-add="Pit Nit Noi" data-price="275">₱275</button></li><li><span class="nm"><b>Boran Margarita</b><em>With homemade lemongrass cordial</em></span><button class="px" type="button" data-add="Boran Margarita" data-price="275">₱275</button></li></ul></div>
+<div class="cat"><h3>Classic Cocktails</h3><p class="note">All classics ₱275</p><ul class="rows"><li><span class="nm"><b>Margarita</b></span><button class="px" type="button" data-add="Margarita" data-price="275">₱275</button></li><li><span class="nm"><b>Kamikaze</b></span><button class="px" type="button" data-add="Kamikaze" data-price="275">₱275</button></li><li><span class="nm"><b>Daiquiri</b></span><button class="px" type="button" data-add="Daiquiri" data-price="275">₱275</button></li><li><span class="nm"><b>Old Fashioned</b></span><button class="px" type="button" data-add="Old Fashioned" data-price="275">₱275</button></li><li><span class="nm"><b>Mojito</b></span><button class="px" type="button" data-add="Mojito" data-price="275">₱275</button></li><li><span class="nm"><b>Dark and Stormy</b></span><button class="px" type="button" data-add="Dark and Stormy" data-price="275">₱275</button></li><li><span class="nm"><b>Bramble</b></span><button class="px" type="button" data-add="Bramble" data-price="275">₱275</button></li><li><span class="nm"><b>Whiskey Sour</b></span><button class="px" type="button" data-add="Whiskey Sour" data-price="275">₱275</button></li><li><span class="nm"><b>Amaretto Sour</b></span><button class="px" type="button" data-add="Amaretto Sour" data-price="275">₱275</button></li></ul></div></div>
+      </details>
+    </div>
+  </section>
+
+  <!-- 6 · YOUR TABLE: the close. The order you built, printed like a label, and the place. -->
+  <section id="table" class="close room--dark">
+    <div class="sc-wrap">
+      <div class="close__grid">
+        <div class="ticket" id="ticket">
+          <p class="meta">Kafae Boran · Your table</p>
+          <h2>Reserve a table</h2>
+          <p class="empty" id="ticketEmpty">Nothing on your table yet. Tap any price on this page and it lands here, so you can send it when you reserve.</p>
+          <ol id="ticketLines" hidden></ol>
+          <div class="total" id="ticketTotal" hidden><span>Total</span><span id="ticketSum">₱0</span></div>
+          <div class="btns">
+            <a class="btn btn--gold" href="https://m.me/100095023802641" target="_blank" rel="noopener">Reserve a table</a>
+            <button class="btn btn--line" type="button" id="copyOrder" hidden>Copy my order</button>
+          </div>
+          <p class="fine">Prices from the café's 2025 menu. The café confirms prices and availability when you message.</p>
+        </div>
+        <div class="visit" id="visit">
+          <dl>
+            <dt>Where</dt><dd>Left Wing, RC Intino Bldg 2, Montilla Blvd, Brgy. Ong Yiu, Butuan City 8600</dd>
+            <dt>Call</dt><dd><a href="tel:+639171563102">0917 156 3102</a></dd>
+            <dt>Hours</dt><dd>
+              <table class="hours" id="hoursTable">
+                <tr data-d="1"><td>Monday</td><td>10 AM to 12 MN</td></tr>
+                <tr data-d="2"><td>Tuesday</td><td>10 AM to 12 MN</td></tr>
+                <tr data-d="3"><td>Wednesday</td><td>10 AM to 12 MN</td></tr>
+                <tr data-d="4"><td>Thursday</td><td>10 AM to 12 MN</td></tr>
+                <tr data-d="5"><td>Friday</td><td>10 AM to 12 MN</td></tr>
+                <tr data-d="6"><td>Saturday</td><td>10 AM to 1 AM</td></tr>
+                <tr data-d="0"><td>Sunday</td><td>10 AM to 1 AM</td></tr>
+              </table></dd>
+          </dl>
+          <div class="map"><iframe title="KAFAE BORAN on Google Maps" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=Kafae%20Boran%2C%20RC%20Intino%20Building%2C%20Butuan%20City&ll=8.9572503,125.5399257&z=17&output=embed"></iframe></div>
+          <div class="rating">
+            <b>4.5</b><span>from 55 Google reviews, including Alexandra C., Noelle and Shawn C.</span>
+            <a class="btn btn--line" href="https://search.google.com/local/writereview?placeid=ChIJfW_K4ujBATMR5eJ-N6o4qCE" target="_blank" rel="noopener">Write a review</a>
+            <a class="btn btn--line" href="https://www.google.com/maps/dir/?api=1&destination=8.9572503,125.5399257&destination_place_id=ChIJfW_K4ujBATMR5eJ-N6o4qCE" target="_blank" rel="noopener">Get directions</a>
+          </div>
+        </div>
+      </div>
+      <footer class="foot">
+        <span>© <span id="yr"></span> KAFAE BORAN · The Ancient Coffee · <a href="https://www.facebook.com/profile.php?id=100095023802641" target="_blank" rel="noopener">Facebook</a> · <a href="https://www.instagram.com/kafaeboran.bxu" target="_blank" rel="noopener">Instagram</a></span>
+        <span>Watermark by <a href="https://kendamin.github.io" target="_blank" rel="noopener">Ken Abuda</a></span>
+      </footer>
+    </div>
+  </section>
+</main>
+
+<button class="tab" id="tab" type="button" aria-label="Your table" aria-haspopup="dialog"><span>Your table</span><b id="tabSum">₱0</b><span class="n" id="tabCount">0</span></button>
+
+<nav class="mbar" aria-label="Quick actions">
+  <a href="tel:+639171563102"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>Call</a>
+  <a href="https://m.me/100095023802641" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M21 12a9 9 0 0 1-13.5 7.8L3 21l1.2-4.5A9 9 0 1 1 21 12z"/></svg>Message</a>
+  <a href="https://www.google.com/maps/dir/?api=1&destination=8.9572503,125.5399257&destination_place_id=ChIJfW_K4ujBATMR5eJ-N6o4qCE" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M12 21s-7-6.2-7-12a7 7 0 0 1 14 0c0 5.8-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>Directions</a>
+</nav>
+
+<!-- the table sheet: the running bill -->
+<dialog class="sheet" id="tableSheet" closedby="any" aria-labelledby="sheet-title">
+  <div class="sheet__in">
+    <div class="sheet__head">
+      <div><h2 id="sheet-title">Your table</h2><p>Send this with your reservation. The café confirms prices.</p></div>
+      <form method="dialog"><button class="x" aria-label="Close">✕</button></form>
+    </div>
+    <ul class="lines" id="sheetLines"></ul>
+    <div class="ticket" style="padding:0;box-shadow:none;background:transparent"><div class="total"><span>Total</span><span id="sheetSum">₱0</span></div></div>
+    <a class="btn btn--gold" href="https://m.me/100095023802641" target="_blank" rel="noopener">Reserve a table</a>
+    <button class="btn btn--line" type="button" id="clearTable">Clear table</button>
+  </div>
+</dialog>
+
+<!-- message chooser -->
+<dialog class="sheet" id="msgDialog" closedby="any" aria-labelledby="msg-title">
+  <div class="sheet__in">
+    <div class="sheet__head">
+      <div><h2 id="msg-title">Message KAFAE BORAN</h2><p>Reserve a table, order a whole cake or ask a question.</p></div>
+      <form method="dialog"><button class="x" aria-label="Close">✕</button></form>
+    </div>
+    <p class="note" id="msgCopied" hidden>Your order is copied. Paste it in the chat.</p>
+    <a class="btn btn--gold" id="msgApp" hidden href="fb-messenger://user-thread/100095023802641">Open Messenger app</a>
+    <a class="btn btn--ink" style="background:#241A11;color:#FBF4E6" href="https://m.me/100095023802641" target="_blank" rel="noopener">Message on Facebook</a>
+    <a class="btn btn--line" href="tel:+639171563102">Call 0917 156 3102</a>
+    <a class="btn btn--line" href="sms:+639171563102">Send a text</a>
+    <div class="note" id="msgNote" hidden>
+      <p style="margin:0">See <strong>"Get the Messenger app"</strong>? Tap <strong>Open in Messenger</strong> below it instead.</p>
+      <p style="margin:4px 0 0;font-size:12px;color:#66543F">Still not opening? Tap <strong>•••</strong> and choose <strong>Open in browser</strong>.</p>
+    </div>
+  </div>
+</dialog>
+
+<script src="scrollcraft.js"></script>
+<script>
+  ScrollCraft.mount(document.body);
+  document.getElementById("yr").textContent = new Date().getFullYear();
+
+  /* Hours: bold today, in Philippine time */
+  (function(){
+    const now = new Date(new Date().toLocaleString("en-US",{timeZone:"Asia/Manila"}));
+    const row = document.querySelector(`#hoursTable tr[data-d="${now.getDay()}"]`); if (row) row.classList.add("today");
+  })();
+
+  /* Hero pointer lean: the planes shift a little toward where you look (fine pointers only) */
+  (function(){
+    const hero = document.querySelector(".hero");
+    if (ScrollCraft.reduce || !matchMedia("(hover: hover) and (pointer: fine)").matches) return;
+    let tx = 0, ty = 0, x = 0, y = 0, raf = 0;
+    const tick = () => { x += (tx - x) * .08; y += (ty - y) * .08; hero.style.setProperty("--mx", x.toFixed(3)); hero.style.setProperty("--my", y.toFixed(3));
+      raf = (Math.abs(tx - x) > .001 || Math.abs(ty - y) > .001) ? requestAnimationFrame(tick) : 0; };
+    hero.addEventListener("pointermove", e => { tx = e.clientX / innerWidth * 2 - 1; ty = e.clientY / innerHeight * 2 - 1; if (!raf) raf = requestAnimationFrame(tick); });
+  })();
+
+  /* THE TAB (signature): every price is an input. What you add follows you and prints at the end. */
+  const peso = n => "₱" + n.toLocaleString("en-PH");
+  let table = [];
+  try { table = JSON.parse(localStorage.getItem("kb-table") || "[]"); if (!Array.isArray(table)) table = []; } catch { table = []; }
+  const save = () => { try { localStorage.setItem("kb-table", JSON.stringify(table)); } catch {} };
+  const tab = document.getElementById("tab"), sheet = document.getElementById("tableSheet");
+  function orderText() {
+    if (!table.length) return "";
+    const lines = table.map(l => `${l.q} x ${l.name}  ${peso(l.q * l.price)}`);
+    return `Hi KAFAE BORAN! I'd like to reserve a table.\nMy order:\n${lines.join("\n")}\nTotal: ${peso(total())}\nDate/time: \nGuests: `;
+  }
+  const total = () => table.reduce((s, l) => s + l.q * l.price, 0);
+  function render(bump) {
+    const count = table.reduce((s, l) => s + l.q, 0);
+    tab.classList.toggle("is-on", count > 0);
+    document.getElementById("tabCount").textContent = count;
+    document.getElementById("tabSum").textContent = peso(total());
+    tab.setAttribute("aria-label", `Your table: ${count} item${count === 1 ? "" : "s"}, ${peso(total())}`);
+    if (bump) { tab.classList.remove("bump"); void tab.offsetWidth; tab.classList.add("bump"); }
+    // sheet
+    const sl = document.getElementById("sheetLines"); sl.innerHTML = "";
+    table.forEach((l, i) => {
+      const li = document.createElement("li");
+      li.innerHTML = `<span></span><span class="qty"><button type="button" aria-label="One less">−</button><b></b><button type="button" aria-label="One more">+</button></span><b></b>`;
+      li.children[0].textContent = l.name; li.querySelector(".qty b").textContent = l.q; li.lastElementChild.textContent = peso(l.q * l.price);
+      const [minus, plus] = li.querySelectorAll("button");
+      minus.addEventListener("click", () => { l.q--; if (l.q <= 0) table.splice(i, 1); save(); render(); });
+      plus.addEventListener("click", () => { l.q++; save(); render(); });
+      sl.appendChild(li);
+    });
+    document.getElementById("sheetSum").textContent = peso(total());
+    if (!table.length && sheet.open) sheet.close();
+    // ticket at the close
+    const tl = document.getElementById("ticketLines"); tl.innerHTML = "";
+    table.forEach(l => { const li = document.createElement("li"); li.innerHTML = "<span></span><span></span>";
+      li.children[0].textContent = `${l.q} × ${l.name}`; li.children[1].textContent = peso(l.q * l.price); tl.appendChild(li); });
+    const has = table.length > 0;
+    tl.hidden = !has; document.getElementById("ticketTotal").hidden = !has; document.getElementById("ticketEmpty").hidden = has;
+    document.getElementById("copyOrder").hidden = !has;
+    document.getElementById("ticketSum").textContent = peso(total());
+    document.querySelectorAll(".px").forEach(b => b.classList.toggle("is-added", table.some(l => l.name === b.dataset.add)));
+  }
+  document.addEventListener("click", e => {
+    const b = e.target.closest(".px[data-add]"); if (!b) return;
+    const name = b.dataset.add, price = +b.dataset.price;
+    const line = table.find(l => l.name === name);
+    if (line) line.q++; else table.push({ name, price, q: 1 });
+    save(); render(true);
+  });
+  tab.addEventListener("click", () => { sheet.showModal(); sheet.querySelector(".btn").focus(); });
+  document.getElementById("clearTable").addEventListener("click", () => { table = []; save(); render(); });
+  const copy = async () => { try { await navigator.clipboard.writeText(orderText()); return true; } catch { return false; } };
+  document.getElementById("copyOrder").addEventListener("click", async e => {
+    const ok = await copy(); e.target.textContent = ok ? "Order copied" : "Copy failed"; setTimeout(() => e.target.textContent = "Copy my order", 1800);
+  });
+  render();
+
+  /* MESSAGE CHOOSER: m.me links open the chooser (plain links still work without JS).
+     If there is an order on the table, it is copied so it can be pasted in the chat. */
+  const msgDialog = document.getElementById("msgDialog");
+  const isPhone = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent) || (navigator.maxTouchPoints > 1 && /Macintosh/.test(navigator.userAgent));
+  const inFacebookApp = /FBAN|FBAV|FB_IAB|FBIOS|Messenger|Instagram/i.test(navigator.userAgent);
+  if (isPhone) document.getElementById("msgApp").hidden = false;
+  if (inFacebookApp) document.getElementById("msgNote").hidden = false;
+  document.addEventListener("click", async e => {
+    const a = e.target.closest('a[href^="https://m.me/"]');
+    if (!a || msgDialog.contains(a)) return;
+    e.preventDefault();
+    if (sheet.open) sheet.close();
+    document.getElementById("msgCopied").hidden = !(table.length && await copy());
+    msgDialog.showModal();
+    msgDialog.querySelector(".btn:not([hidden])")?.focus();
+  });
+  if (!("closedBy" in HTMLDialogElement.prototype)) {
+    for (const d of [msgDialog, sheet]) {
+      let down = false; const out = e => { const r = d.getBoundingClientRect(); return e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom; };
+      d.addEventListener("pointerdown", e => { down = out(e); }); d.addEventListener("pointerup", e => { if (down && out(e)) d.close(); });
+    }
+  }
+  /* index popover closes when a link is chosen */
+  document.getElementById("index").addEventListener("click", e => { if (e.target.closest("a")) e.currentTarget.hidePopover(); });
+</script>
+</body>
+</html>
