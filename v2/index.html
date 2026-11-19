@@ -125,12 +125,13 @@
   /* --------------------------------------------------------- 2 · coffee bar */
   .room-head{display:grid;gap:10px;margin-bottom:var(--sc-8)}
   .room-head .sc-body{color:var(--sc-ink-soft)}
-  .hang{display:grid;grid-template-columns:repeat(12,1fr);gap:var(--sc-6) var(--sc-5);align-items:start}
+  .hang{display:grid;grid-template-columns:repeat(12,1fr);gap:var(--sc-8) var(--sc-5);align-items:start}
   .obj{display:grid;gap:14px;margin:0}
   .obj img{width:100%;height:auto;border-radius:6px;box-shadow:var(--sc-e2)}
   .hang .obj:nth-child(1){grid-column:1 / span 4}
-  .hang .obj:nth-child(2){grid-column:6 / span 6;margin-top:var(--sc-9)}
-  .hang .obj:nth-child(3){grid-column:2 / span 5;margin-top:calc(var(--sc-8) * -1)}
+  .hang .obj:nth-child(2){grid-column:6 / span 6;margin-top:var(--sc-8)}
+  /* second row starts below the first row's labels; no negative pull-up (it covered the Wan-Man price) */
+  .hang .obj:nth-child(3){grid-column:2 / span 5}
   .hang .obj:nth-child(4){grid-column:8 / span 4;margin-top:var(--sc-6)}
   @media (max-width:760px){ .hang{grid-template-columns:1fr 1fr} .hang .obj:nth-child(n){grid-column:auto;margin-top:0} .hang .obj:nth-child(2){grid-column:1 / -1} }
 
